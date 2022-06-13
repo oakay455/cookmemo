@@ -1,0 +1,7 @@
+<% if @model == 'member' %>
+  <h3>Member search for "<%= @content %>"</h3>
+  <%= render 'members/index', members: @records %>
+<% elsif @model == 'recipe' %>
+  <h3>Recipes search for"<%= @content %>"</h3>
+  <%= render 'recipes/index', recipes: @records %>
+<% end %>

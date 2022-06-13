@@ -1,0 +1,23 @@
+<table class="table table-hover">
+    <tbody>
+      <% recipes.each do |recipe| %>
+      <tr>
+        <td><%= link_to recipe_path(recipe) do %>
+            <%= image_tag recipe.get_recipe_image(100,100) %>
+            <% end %><br>
+            <%= link_to member_path(recipe.member.id) do %>
+            <%= recipe.member.name %>
+            <% end %>
+      </td>
+      <td><%= link_to "コメント数: #{recipe.comments.count}", recipe_path(recipe.id) %></td>
+        <td>
+          <%= link_to recipe_path(recipe) do %>
+              <%= recipe.title %>
+              <% end %>
+        </td>
+        <td><%= recipe.body %></td>
+        <td><%= recipe.category.name %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>

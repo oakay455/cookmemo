@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <%= render "layouts/sidebar", categories: @categories %>
+    </div>
+    <div class="col-8">
+      <h3>新着レシピ</h3>
+        <%= render "index", recipes: @recipes %>
+    </div>

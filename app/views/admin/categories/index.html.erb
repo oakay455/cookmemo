@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+     <div class="mini-title">カテゴリー一覧・追加</div>
+     </div>
+    <div>
+     <%= form_with model: @category, url: admin_categories_path, method: :post do |f| %>
+     <%= f.label :カテゴリー名 %>
+     <%= f.text_field :name %>
+     <%= f.submit "新規登録", class: "btn btn-success ml-3 mb-2" %>
+     <% end %>
+    </div>
+  <div class="row">
+   <div class="col-5">
+    <table class="table table-bordered table-hover text-center">
+     <thead class="thead">
+      <tr>
+       <th>カテゴリー</th>
+       <th colspan="3"></th>
+      </tr>
+     </thead>
+    <tbody class="tbody">
+      <% @categories.each do |all_category| %>
+       <tr>
+        <td><%= all_category.name %></td>
+        <td><%= link_to "編集する", edit_admin_category_path(all_category.id), class: "btn btn-sm btn-success admin_category_edit" %></td>
+       </tr>
+      <% end %>
+     </tbody>
+    </table>
+  </div>
+ </div>
+ <div><%= link_to "管理者トップページに戻る", admin_root_path %></div>
+</div>

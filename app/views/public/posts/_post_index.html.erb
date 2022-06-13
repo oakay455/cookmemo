@@ -1,0 +1,8 @@
+<% posts.each do |post| %>
+        <div>
+          <%= link_to post_path(post) do %>
+            <%= image_tag post.post_image, size: "150x150" %></br>
+            <% end %>
+          <p><%= post.created_at.strftime('%Y/%m/%d') %></p>
+        </div>
+      <% end %>

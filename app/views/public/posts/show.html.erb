@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <%= render "layouts/sidebar", categories: @categories %>
+    </div>
+      <div class="col-8">
+        <h3>記録詳細</h3>
+          <div>
+           <% if @post.post_image.attached? %>
+            <%= image_tag @post.get_post_image(200,200) %>
+           <% else %>
+            <%= image_tag 'no_image', size: "200x200" %>
+           <% end %>
+          </div>
+          <div>
+            <%= link_to member_path(@post.member.id) do %>
+            <%= @post.member.name %>
+            <% end %>
+          </div>
+          <div>
+            <!--入力時の改行をビューに反映-->
+            <%= safe_join(@post.body.split("\n"),tag(:br)) %>
+          </div>
+          <div>
+            <%= link_to "編集する", edit_post_path(@post.id), class: "btn btn-success" %>
+            <%= link_to "削除する", post_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
+          </div>
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,24 @@
+<div><%= link_to "マイページに戻る", member_path(current_member) %></div>
+<h3>レシピを投稿する</h3>
+  <%= form_with model: @recipe do |f| %>
+  <div>
+    <%= f.file_field :recipe_image, accept: "image/*" %>
+  </div>
+  <div>
+   <%= f.label :カテゴリー %>
+   <%= f.collection_select(:category_id, @categories, :id, :name, {prompt: "--選択してください--"}) %>
+  </div>
+  <div>
+    <%= f.label :タイトル %>
+      <%= f.text_field :title %>
+  </div>
+    <%= f.label :主な食材 %>
+      <%= f.text_field :ingredient %>
+  <div>
+    <%= f.label :説明 %>
+      <%= f.text_area :body %>
+  </div>
+  <div>
+    <%= f.submit '投稿する' %>
+  </div>
+  <% end %>

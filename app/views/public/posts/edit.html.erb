@@ -1,0 +1,14 @@
+<h3>記録を編集する</h3>
+  <%= form_with model: @post do |f| %>
+  <div>
+    <%= f.file_field :post_image, accept: "image/*" %>
+  </div>
+  <div>
+    <%= f.label :内容 %>
+      <%= f.text_area :body %>
+  </div>
+  <div>
+    <%= f.submit '編集を保存する' %>
+  </div>
+  <% end %>
+  <div><%= link_to "戻る", post_path(@post.id) %></div>
