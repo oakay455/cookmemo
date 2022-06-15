@@ -34,37 +34,18 @@
           <%= link_to "編集する", edit_recipe_path(@recipe.id), class: "btn btn-success" %>
           <%= link_to "削除する", recipe_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
           <% end %>
-          <% if @recipe.recipe_favorited_by?(current_member) %>
-            <p>
-              <%= link_to recipe_recipe_favorites_path(@recipe), method: :delete do %>
-                ♥<%= @recipe.recipe_favorites.count %> いいね
-              <% end %>
-            </p>
-            <% else %>
-            <p>
-              <%= link_to recipe_recipe_favorites_path(@recipe), method: :post do %>
-                ♡<%= @recipe.recipe_favorites.count %> いいね
-              <% end %>
-            </p>
-          <% end %>
-        </div>
+          <div id = "favorite_<%= @recipe.id %>">
+            <%= render partial: "public/recipe_favorites/recipe_favorite", locals: { recipe: @recipe } %>
+          </div>
+          <div id = "bookmark_<%= @recipe.id %>">
+            <%= render partial: "public/bookmarks/bookmark", locals: { recipe: @recipe } %>
+          </div>
 
-        <div>
-          <p>コメント件数：<%= @recipe.comments.count %></p>
-          <% @recipe.comments.each do |comment| %>
-            <p><%= image_tag comment.member.get_profile_image(100,100) %></p>
-            <%= comment.member.name %>
-            <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
-            <% if comment.member == current_member || admin_signed_in? %>
-              <%= link_to "削除", recipe_comment_path(comment.recipe, comment), method: :delete %>
-            <% end %>
-          <% end %>
-        </div>
-        <div>
-          <%= form_with model: [@recipe, @comment] do |f| %>
-            <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-            <%= f.submit "送信する" %>
-          <% end %>
-        </div>
+          <div class="new-comment">
+            <%= render partial: "public/comments/form", locals: { recipe: @recipe, comment: @comment } %>
+          </div>
+          <div id = "comments_area">
+            <%= render partial: "public/comments/comment", locals: { recipe: @recipe } %>
+          </div>
       </div>
     </div>

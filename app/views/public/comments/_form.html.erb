@@ -1,0 +1,7 @@
+<%= form_with(model: [recipe, comment], local: false) do |f| %>
+  <div id="comments-error">
+    <%= render 'layouts/errors', obj: comment %>
+  </div>
+  <%= f.text_area :comment, placeholder: "コメントをここに", class: "w-100" %>
+  <%= f.submit "送信する" %>
+<% end %>

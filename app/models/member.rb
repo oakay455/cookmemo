@@ -15,6 +15,9 @@ class Member < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
+  has_many :bookmarks, dependent: :destroy
+  # has_many :bookmarked_recipes, through: :bookmarks, source: :recipe
+
   has_one_attached :profile_image
 
   def get_profile_image(width, height)
@@ -51,12 +54,20 @@ class Member < ApplicationRecord
     followings.include?(member)
   end
 
-
-
   # is_deletedがfalseならtrueを返すようにしている、
   #退会したら再度ログインできないようにしている
   def active_for_authentication?
     super && (is_deleted == false)
   end
 
+
+  #お気に入り（ブックマーク）テーブルにrecipe_idが存在しているか確認
+  def bookmarked_by?(recipe_id)
+    bookmarks.where(recipe_id: recipe_id).exists?
+  end
+
+  #いいねテーブルにrecipe_idが存在しているか確認
+  def favorited_by?(recipe_id)
+    recipe_favorites.where(recipe_id: recipe_id).exists?
+  end
 end

@@ -41,16 +41,22 @@ scope module: :public do
      resource :relationships, only:[:create, :destroy]
      get 'followings' => 'relationships#followings', as: 'followings'
      get 'followers' => 'relationships#followers', as: 'followers'
+     member do
+     get :bookmarks #特定のidが必要なため、memberメソッド使用
     end
+end
 
  resources :recipes do
-   resource :recipe_favorites, only: [:create, :destroy]
+   resources :recipe_favorites, only: [:create, :destroy]
    resources :comments, only:[:create, :destroy]
+   resources :bookmarks, only:[:create, :destroy]
    get :search, on: :collection
   end
 
  resources :posts do
    resource :favorites, only: [:create, :destroy]
+  end
+
   end
 
   # get 'members/mypage' => 'members#show', as:'mypage'
@@ -61,4 +67,3 @@ scope module: :public do
  patch '/members/:id/withdraw' => 'members#withdraw', as: 'withdraw'
 
  end
-end

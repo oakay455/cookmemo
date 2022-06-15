@@ -1,17 +1,18 @@
 class Public::RecipeFavoritesController < ApplicationController
-  before_action :authenticate_member!
+  before_action :authenticate_member!, only: [:create, :destroy]
+  before_action :recipe_params, only: [:create, :destroy]
 
   def create
-    @recipe = Recipe.find(params[:recipe_id])
-    favorite = current_member.recipe_favorites.new(recipe_id: @recipe.id)
-    favorite.save
-    redirect_to recipe_path(@recipe)
+    RecipeFavorite.create(member_id: current_member.id, recipe_id: @recipe.id)
   end
 
   def destroy
+    recipe_favorite = RecipeFavorite.find_by(member_id: current_member.id, recipe_id: @recipe.id)
+    recipe_favorite.destroy
+  end
+
+   private
+  def recipe_params
     @recipe = Recipe.find(params[:recipe_id])
-    favorite = current_member.recipe_favorites.find_by(recipe_id: @recipe.id)
-    favorite.destroy
-    redirect_to recipe_path(@recipe)
   end
 end

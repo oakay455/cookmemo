@@ -1,0 +1,14 @@
+<% if !member_signed_in? %>
+  <i class="far fa-heart"></i>
+  <%= recipe.recipe_favorites.length %>
+<% elsif current_member.favorited_by?(recipe.id) %>
+  <%= link_to recipe_recipe_favorite_path(recipe, recipe.recipe_favorites), class: "favorite-link", method: :delete, remote: true do %>
+    <i class="fas fa-heart"></i>
+  <% end %>
+  <%= recipe.recipe_favorites.length %>
+<% else %>
+  <%= link_to recipe_recipe_favorites_path(recipe), class: "favorite-link", method: :post, remote: true do %>
+    <i class="far fa-heart"></i>
+  <% end %>
+  <%= recipe.recipe_favorites.length %>
+<% end %>

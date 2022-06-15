@@ -1,0 +1,14 @@
+<% if !member_signed_in? %>
+  <i class="far fa-bookmark"></i>
+  <%= recipe.bookmarks.length %>
+<% elsif current_member.bookmarked_by?(recipe.id) %>
+  <%= link_to recipe_bookmark_path(recipe, recipe.bookmarks), class: "bookmark-link", method: :delete, remote: true do %>
+    <i class="fas fa-bookmark"></i>
+  <% end %>
+  <%= recipe.bookmarks.length %>
+<% else %>
+  <%= link_to recipe_bookmarks_path(recipe), class: "bookmark-link", method: :post, remote: true do %>
+    <i class="far fa-bookmark"></i>
+  <% end %>
+  <%= recipe.bookmarks.length %>
+<% end %>

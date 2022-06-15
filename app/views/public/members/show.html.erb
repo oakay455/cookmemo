@@ -12,7 +12,7 @@
         <h4><%= @member.introduction %></h4>
         <p>フォロー<%= link_to @member.followings.count, member_followings_path(@member) %></p>
         <p>フォロワー<%= link_to @member.followers.count, member_followers_path(@member) %></p>
-
+        <%= link_to "ブックマークしたレシピ", bookmarks_member_path(@member) %>
       </div>
       <div>
         <% if @member == current_member %>

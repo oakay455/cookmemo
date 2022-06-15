@@ -5,6 +5,8 @@ class Recipe < ApplicationRecord
   has_many :recipe_favorites, dependent: :destroy
   belongs_to :category
 
+  has_many :bookmarks, dependent: :destroy
+
   has_one_attached :recipe_image
 
   def recipe_favorited_by?(member)

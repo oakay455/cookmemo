@@ -47,11 +47,13 @@
       </nav>
     </header>
     <main>
-      <div><%=render "layouts/notice" %></div>
+      <div id="flash-message">
+        <%= render "layouts/notice" %>
+      </div>
       <div class="d-flex justify-content-center mb-2">
       <%= render 'public/searches/form' %>
     </div>
-    </main>
     <%= yield %>
+    </main>
   </body>
 </html>

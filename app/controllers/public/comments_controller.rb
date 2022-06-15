@@ -4,13 +4,21 @@ class Public::CommentsController < ApplicationController
     @recipe = Recipe.find(params[:recipe_id])
     @comment = current_member.comments.new(comment_params)
     @comment.recipe_id = @recipe.id
-    @comment.save!
-      redirect_to recipe_path(@recipe)
+    if @comment.save!
+      flash.now[:notice] = 'コメントを投稿しました'
+      render :comment  #render先にjsファイルを指定
+    else
+      render :error
+    end
   end
 
   def destroy
-    Comment.find(params[:id]).destroy
-    redirect_to recipe_path(params[:recipe_id])
+    @recipe = Recipe.find(params[:recipe_id])
+    @comment = @recipe.comments.find(params[:id]).destroy
+    flash.now[:alert] = '投稿を削除しました'
+    #renderしたときに@postのデータがないので@postを定義
+    @recipe = Recipe.find(params[:recipe_id])
+    render :comment  #render先にjsファイルを指定
   end
 
   private

@@ -1,4 +1,5 @@
 class Public::MembersController < ApplicationController
+  before_action :set_member, only:[:bookmarks]
   # before_action :authenticate_member!
   # before_action :ensure_correct_member, only: [:show, :edit, :update]
 
@@ -6,7 +7,6 @@ class Public::MembersController < ApplicationController
     @member = Member.find(params[:id])
     @recipes = @member.recipes
     @posts = @member.posts
-    # @posts = Post.all.order(created_at: :desc)
     @categories = Category.all
   end
 
@@ -32,6 +32,11 @@ class Public::MembersController < ApplicationController
     redirect_to root_path
   end
 
+  def bookmarks
+    bookmarks = Bookmark.where(member_id: @member.id).pluck(:recipe_id)
+    @bookmark_recipes = Recipe.find(bookmarks)
+  end
+
   private
 
   def member_params
@@ -43,5 +48,9 @@ class Public::MembersController < ApplicationController
     unless @member == current_member
       redirect_to member_path(current_member)
     end
+  end
+
+  def set_member
+    @member = Member.find(params[:id])
   end
 end
