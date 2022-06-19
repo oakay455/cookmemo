@@ -1,3 +1,4 @@
+<div class ="form">
 <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -18,9 +19,11 @@
     </div>
   <% end %>
 
-  <div class="actions">
+  <div class="field">
     <%= f.submit "Log in" %>
   </div>
 <% end %>
-<p>会員登録はこちら</p>
+<div class="field">
+  会員登録がお済みでない方はこちらへ→
 <%= render "public/shared/links" %>
+</div>

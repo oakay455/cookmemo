@@ -53,7 +53,7 @@ class Public::RecipesController < ApplicationController
  def bookmarks
   @bookmark_recipes = current_member.bookmark_recipes.includes(:member).order(created_at: :desc)
  end
-
+ 
   private
 
   def recipe_params

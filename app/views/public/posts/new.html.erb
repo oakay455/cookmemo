@@ -1,15 +1,18 @@
-<div><%= link_to "マイページに戻る", member_path(current_member) %></div>
-<h3>アルバムに記録する</h3>
+<div class="form">
+  <div class="form-title">  
+    アルバムに記録する
+  </div>
   <%= render "layouts/errors", obj: @post %>
   <%= form_with model: @post do |f| %>
-  <div>
+  <div class="field">
     <%= f.file_field :post_image, accept: "image/*" %>
   </div>
-  <div>
-    <%= f.label :内容 %>
+  <div class="field">
+    <%= f.label :本文 %>
       <%= f.text_area :body %>
   </div>
-  <div>
+  <div class="field">
     <%= f.submit '記録する' %>
   </div>
   <% end %>
+  </div>

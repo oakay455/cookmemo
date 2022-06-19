@@ -1,15 +1,12 @@
 <div><%= link_to "レシピ投稿", new_recipe_path %></div>
 <div><%= link_to "料理投稿", new_post_path %></div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-4">
-      <%#<%= render "layouts/sidebar", categories: @categories %>
+<div class="main">
+  <div class="main-side">
       <div class="user-info">
-        <h3>ユーザー情報</h3>
         <%= image_tag @member.get_profile_image(300,300) %>
-        <h3><%= @member.name %></h3>
-        <h4><%= @member.introduction %></h4>
+        <h4><%= @member.name %></h4>
+        <p><%= @member.introduction %></p>
         <div>フォロー<%= link_to @member.followings.count, member_followings_path(@member) %>
         フォロワー<%= link_to @member.followers.count, member_followers_path(@member) %>
         </div>
@@ -21,7 +18,8 @@
       </div>
     </div>
     </div>
-    <div class="col-8">
+    <div class="main-post">
+      <div class="main-recipe">
       <h4>マイレシピ</h4>
         <% @recipes.each do |recipe| %>
       <div>
@@ -32,10 +30,10 @@
           <%= link_to "#{recipe.comments.count} コメント", recipe_path(recipe.id) %>
         <% end %>
       </div>
+    </div>
       <div>
         <h3>マイアルバム</h3>
         <%= render 'public/posts/post_index', posts: @posts %>
       </div>
     </div>
-  </div>
 </div>
