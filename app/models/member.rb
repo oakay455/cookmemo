@@ -4,6 +4,10 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates :name, uniqueness: true
+  validates :name, length: {in:2..20}
+  validates :introduction, length: {maximum:50}
+
   has_many :posts, dependent: :destroy
   has_many :recipes, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -19,6 +23,13 @@ class Member < ApplicationRecord
   # has_many :bookmarked_recipes, through: :bookmarks, source: :recipe
 
   has_one_attached :profile_image
+  
+  def self.guest
+    find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |member|
+      member.password = SecureRandom.urlsafe_base64
+      member.name = "guestuser"
+    end
+  end
 
   def get_profile_image(width, height)
   unless profile_image.attached?

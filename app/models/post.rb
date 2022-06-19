@@ -1,5 +1,7 @@
 class Post < ApplicationRecord
 
+  validates :body, presence: true, length: {maximum:250}
+
   belongs_to :member
   # has_many :favorites, dependent: :destroy
 

@@ -1,5 +1,9 @@
 class Recipe < ApplicationRecord
 
+  validates :title, presence: true
+  validates :ingredient, presence: true
+  validates :body, presence: true, length: {maximum:250}
+
   belongs_to :member
   has_many :comments, dependent: :destroy
   has_many :recipe_favorites, dependent: :destroy

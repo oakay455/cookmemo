@@ -1,7 +1,7 @@
 <% if obj.errors.any? %>
   <div class="alert alert-danger">
     <ul>
-      <h5><%= model.errors.count %>件のエラー</h5>
+      <h5><%= obj.errors.count %>件のエラー</h5>
       <% obj.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>

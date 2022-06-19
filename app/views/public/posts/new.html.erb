@@ -1,5 +1,6 @@
 <div><%= link_to "マイページに戻る", member_path(current_member) %></div>
 <h3>アルバムに記録する</h3>
+  <%= render "layouts/errors", obj: @post %>
   <%= form_with model: @post do |f| %>
   <div>
     <%= f.file_field :post_image, accept: "image/*" %>

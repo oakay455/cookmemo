@@ -1,5 +1,6 @@
 <div><%= link_to "マイページに戻る", member_path(current_member) %></div>
 <h3>レシピを投稿する</h3>
+  <%= render "layouts/errors", obj: @recipe %>
   <%= form_with model: @recipe do |f| %>
   <div>
     <%= f.file_field :recipe_image, accept: "image/*" %>

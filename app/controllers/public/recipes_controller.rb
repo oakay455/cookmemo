@@ -42,8 +42,12 @@ class Public::RecipesController < ApplicationController
 
  def update
  @recipe = Recipe.find(params[:id])
- @recipe.update(recipe_params)
- redirect_to recipe_path(@recipe.id)
+ if @recipe.update(recipe_params)
+  redirect_to recipe_path(@recipe.id)
+ else
+  @categories = Category.all
+  render :edit
+ end
  end
 
  def bookmarks

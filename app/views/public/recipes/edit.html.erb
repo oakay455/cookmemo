@@ -1,4 +1,5 @@
 <h3>レシピを編集する</h3>
+<%= render "layouts/errors", obj: @recipe %>
   <%= form_with model: @recipe, url: recipe_path(@recipe.id), method: :patch  do |f| %>
   <div>
     <%= f.file_field :recipe_image, accept: "image/*" %>

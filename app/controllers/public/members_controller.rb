@@ -1,5 +1,6 @@
 class Public::MembersController < ApplicationController
   before_action :set_member, only:[:bookmarks]
+  before_action :ensure_guest_user, only: [:edit]
   # before_action :authenticate_member!
   # before_action :ensure_correct_member, only: [:show, :edit, :update]
 
@@ -16,8 +17,11 @@ class Public::MembersController < ApplicationController
 
   def update
     @member = Member.find(params[:id])
-    @member.update(member_params)
-    redirect_to member_path(@member.id)
+    if @member.update(member_params)
+      redirect_to member_path(@member.id)
+    else
+      render :edit
+    end
   end
 
   def index
@@ -47,6 +51,14 @@ class Public::MembersController < ApplicationController
     @member = current_member
     unless @member == current_member
       redirect_to member_path(current_member)
+    end
+  end
+
+
+  def ensure_guest_user
+    @member = Member.find(params[:id])
+    if @member.name == "guestuser"
+      redirect_to member_path(current_member) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
   end
 

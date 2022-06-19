@@ -1,4 +1,5 @@
 <h3>記録を編集する</h3>
+<%= render "layouts/errors", obj: @post %>
   <%= form_with model: @post do |f| %>
   <div>
     <%= f.file_field :post_image, accept: "image/*" %>

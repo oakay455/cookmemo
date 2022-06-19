@@ -1,4 +1,5 @@
 <h2>プロフィール編集</h2>
+<%= render "layouts/errors", obj: @member %>
 <%= form_with model: @member do |f| %>
 <div>
 <label for="inputImage">ProfileImage</label>

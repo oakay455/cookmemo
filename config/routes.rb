@@ -7,6 +7,11 @@ devise_for :members,skip: [:passwords], controllers: {
   sessions: 'public/sessions'
 }
 
+#ゲストユーザーログイン
+devise_scope :member do
+  post 'members/guest_sign_in', to: 'members/sessions#guest_sign_in'
+end
+
 # 管理者用device
 # URL /admin/sign_in ...
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
