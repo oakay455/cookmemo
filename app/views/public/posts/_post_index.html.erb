@@ -1,8 +1,17 @@
-<% posts.each do |post| %>
-        <div>
-          <%= link_to post_path(post) do %>
-            <%= image_tag post.post_image, size: "150x150" %></br>
-            <% end %>
-          <p><%= post.created_at.strftime('%Y/%m/%d') %></p>
-        </div>
+<div class="post-wrap">
+  <% posts.each do |post| %>
+    <div class="post-box">
+      <%= link_to post_path(post) do %>
+        <% if post.post_image.attached? %>
+          <%= image_tag post.post_image, size: "170x170" %>
+        <% else %>
+      <%= image_tag 'no_image', size: "170x170" %>
       <% end %>
+    <% end %>
+      <div class="post-content">
+        <span class="post-body"><%= link_to post.body, post_path(post) %></span>
+        <span><%= post.created_at.strftime('%Y/%m/%d') %></span>
+      </div>
+    </div>
+  <% end %>
+</div>

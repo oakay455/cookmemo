@@ -1,6 +1,6 @@
 <div class="form">
   <div class="form-title">  
-    レシピを投稿する
+    Post a recipe
   </div>
   <%= render "layouts/errors", obj: @recipe %>
   <%= form_with model: @recipe do |f| %>
@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :説明 %>
-      <%= f.text_area :body %>
+      <%= f.text_area :body, class:"text-line" %>
   </div>
   <div class="field">
     <%= f.submit '投稿する' %>

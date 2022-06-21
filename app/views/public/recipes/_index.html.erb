@@ -1,23 +1,33 @@
-<table class="table table-hover">
-    <tbody>
-      <% recipes.each do |recipe| %>
-      <tr>
-        <td><%= link_to recipe_path(recipe) do %>
-            <%= image_tag recipe.get_recipe_image(100,100) %>
-            <% end %><br>
-            <%= link_to member_path(recipe.member.id) do %>
-            <%= recipe.member.name %>
+<% recipes.each do |recipe| %>
+  <div class="card mb-3 mx-auto" style="max-width: 840px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img class="recipe-image pt-1"><%= link_to recipe_path(recipe) do %>
+          <% if recipe.recipe_image.attached? %>
+            <%= image_tag recipe.recipe_image, size: "200x200" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "200x200" %>
             <% end %>
-      </td>
-      <td><%= link_to "コメント数: #{recipe.comments.count}", recipe_path(recipe.id) %></td>
-        <td>
-          <%= link_to recipe_path(recipe) do %>
-              <%= recipe.title %>
+          <% end %>
+        </img>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body pt-4">
+            <h5 class="card-title"><strong>
+              <%= link_to recipe_path(recipe) do %>
+                <%= recipe.title %>
+              <% end %></strong></h5>
+            <p class="card-text">材料：<%= recipe.ingredient %></p>
+            <p class="card-text">作り方：<%= recipe.body %></p>
+            <p class="card-text"><small class="text-muted">
+              <%= link_to member_path(recipe.member.id) do %>
+              <%= recipe.member.name %>
               <% end %>
-        </td>
-        <td><%= recipe.body %></td>
-        <td><%= recipe.category.name %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+              <%= link_to "コメント数: #{recipe.comments.count}", recipe_path(recipe.id) %>
+            </small></p>
+            <div class="recipe-category"><%= recipe.category.name %></div>
+          </div>
+        </div>
+    </div>
+  </div>
+<% end %>

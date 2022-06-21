@@ -1,6 +1,6 @@
 <div class="form">
-  <div class="form-title">  
-    アルバムに記録する
+  <div class="form-title">
+    Post to album
   </div>
   <%= render "layouts/errors", obj: @post %>
   <%= form_with model: @post do |f| %>
@@ -9,7 +9,7 @@
   </div>
   <div class="field">
     <%= f.label :本文 %>
-      <%= f.text_area :body %>
+      <%= f.text_area :body, class:"text-line" %>
   </div>
   <div class="field">
     <%= f.submit '記録する' %>

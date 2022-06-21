@@ -13,39 +13,29 @@
  *= require_tree .
  *= require_self
  */
- * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
  body {
-   margin: 0;
-   padding: 0;
+  background-color: #f7f4ed !important;
  }
 
  a {
- text-decoration: none;
+ text-decoration: none !important;
+ color: #5f5f5f !important;
 }
 
- .full-page{
-   width: 100vw;
-   height: 100vh;
-   background-color: rgb(247, 246, 242);
- }
-
 .main-visual{
- width: 90%;
- height: 550px;
+ width: 75%;
+ height: 600px;
  margin:0 auto;
  background-image:url(toppage.jpg);
  background-size: cover;
  background-position: center;
+ border-radius: 10px;
 }
 
 .main-visual-content{
  width: 90%;
- height: 550px;
+ height: 600px;
 }
 
 .main-title{
@@ -53,17 +43,30 @@
  line-height: 550px;
  font-family: 'Montserrat', sans-serif;
  font-style: italic;
- font-weight: 200;
+ font-weight: 400;
  font-size: 6em;
+ /*color: #333631;*/
+ /*color: #1f3134*/
+ /*color: #2c4f54;*/
+ color: #001e43;
 }
 
-footer{
+.footer-text{
  width: 100%;
  height: 120px;
  text-align: center;
  line-height: 120px;
+ font-family: 'Montserrat', sans-serif;
+ font-weight: 400;
 }
 
+.navbar-brand{
+ font-size: 24px;
+ font-family: 'Montserrat', sans-serif;
+ font-weight: 400;
+ /*color: black;*/
+ color: #2c4f54;
+}
 .navbar-nav{
  margin-left: auto;
 }
@@ -73,6 +76,7 @@ footer{
  border-style: solid;
  box-sizing: border-box;
  border-color: white;
+ border-width: thin;
  margin:7px;
  padding:0 5px;
 }
@@ -91,7 +95,9 @@ footer{
  width: 50%;
  text-align: center;
  border-radius: 25px;
+ border-width: thin;
  border-style: solid;
+ border-color: silver;
  box-sizing: border-box;
  margin: 40px auto;
  padding: 25px;
@@ -104,7 +110,25 @@ footer{
 .form-title{
  font-size: 28px;
  font-weight: bold;
+ color: gray;
  padding: 10px;
+}
+
+.field{
+ color: gray;
+}
+
+.text-line{
+ border-style: solid;
+ box-sizing: border-box;
+ border-radius: 10px;
+ border-color: silver;
+ border-width: thin;
+ padding: 0.5em;
+ width: 20em;
+ height: 100px;
+ font-size: 1em;
+ line-height: 1.2;
 }
 
 .main{
@@ -163,4 +187,101 @@ footer{
 .notice{
  background-color: rgb(254,240,54);
  text-align: center;
+ color: gray;
+}
+
+/*レシピ(recipe)*/
+.recipe-index {
+ margin: 0 auto;
+}
+/*.recipe-index .container{*/
+/* width: 840px;*/
+/* margin: 0px auto;*/
+/* padding: 20px 0px;*/
+/* color: #5f5f5f;*/
+/*}*/
+
+/*.recipe-title{*/
+/* font-weight: 400;*/
+/* font-family: 'Montserrat', sans-serif;*/
+/*}*/
+
+/*.recipe-box{*/
+/* padding-top: 50px;*/
+/*}*/
+
+/*.recipe-item{*/
+/* padding-bottom: 20px;*/
+/* margin-bottom: 20px;*/
+/* border-bottom: 1px solid #f7f7f7;*/
+/* display: flex;*/
+/* justify-content: flex-start;*/
+/* width: 840px;*/
+/* white-space: nowrap;*/
+/* overflow: hidden;*/
+/* text-overflow: ellipsis;*/
+/*}*/
+
+/*マウスオーバー時*/
+/*.recipe-item:hover {*/
+/* background-color: #fafdff;*/
+ /*cursor: pointer;*/
+/*}*/
+
+/*.recipe-image {*/
+/* padding-top: 5px !important;*/
+/*}*/
+
+/*.img-hidden {*/
+/* height: 100px;*/
+/* overflow: hidden;*/
+/*}*/
+
+/*.recipe-body{*/
+/* padding:20px 25px;*/
+/*}*/
+
+/*.recipe-title{*/
+/* padding-bottom: 15px;*/
+/*}*/
+
+.text-muted{
+ display: inline-block;
+}
+
+.recipe-category{
+ display: inline-block;
+  padding: 5px 10px;
+  background-color: #7f7f7f;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+/*アルバム(post)*/
+.post-wrap {
+ display: flex;
+ flex-wrap: wrap;
+ width: 800px;
+ margin:0 auto;
+}
+
+.post-box {
+ width: 170px;
+ height: 200px;
+ margin: 10px;
+ position: relative;
+}
+
+.post-content {
+ width: 200px;
+ position: absolute;
+ left: 0;
+ bottom: 0;
+}
+
+.post-body {
+ color: #5f5f5f;
+ font-size: 15px;
 }

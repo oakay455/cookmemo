@@ -1,9 +1,4 @@
-<div class="container">
-  <div class="row">
-    <div>
-      <%= render 'layouts/category', categories: @categories %>
-    </div>
-    <div class="col-8">
-      <h3>新着レシピ</h3>
-        <%= render "index", recipes: @recipes %>
-    </div>
+<%= render 'layouts/category', categories: @categories %>
+<div class="container center-block">
+<%= render "index", recipes: @recipes %>
+</div>
