@@ -1,0 +1,66 @@
+<%= render 'layouts/category', categories: @categories %>
+    <div class="recipe">
+      <h3 class="text-center">recipe details</h3>
+        <div class="recipe-details">
+          
+          <!--↓ここから画面上部-->
+          <div class="recipe-item">
+            
+          <!--画面左側部分-->
+            <div class="recipe-left">
+              <div class="recipe-image">
+               <% if @recipe.recipe_image.attached? %>
+                <%= image_tag @recipe.get_recipe_image(200,200) %>
+               <% else %>
+                <%= image_tag 'no_image', size: "300x200" %>
+               <% end %>
+              </div>
+            
+              <div class="recipe-like">
+                <div id = "favorite_<%= @recipe.id %>">
+                  <%= render partial: "public/recipe_favorites/recipe_favorite", locals: { recipe: @recipe } %>
+                </div>
+          
+                <div id = "bookmark_<%= @recipe.id %>">
+                  <%= render partial: "public/bookmarks/bookmark", locals: { recipe: @recipe } %>
+                </div>
+              </div>
+            
+            </div>
+          
+          <!--画面右側のテキスト部分    -->
+            <div class="recipe-memo">
+              <div class="recipe-text">
+              <p>カテゴリー</p>
+              <%= @recipe.category.name %>
+              <p>タイトル</p>
+              <%= @recipe.title %>
+              <p>主な具材</p>
+              <%= @recipe.ingredient %>
+              <p>説明</p>
+              <!--入力時の改行をビューに反映-->
+              <%= safe_join(@recipe.body.split("\n"),tag(:br)) %>
+            <div>
+              <% if @recipe.member == current_member %>
+              <%= link_to "編集する", edit_recipe_path(@recipe.id), class: "btn btn-success" %>
+              <%= link_to "削除する", recipe_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
+              <% end %>
+            </div>
+            </div>
+        
+            </div>
+          <!--↑ここまで画面上部-->
+        
+          <div class="recipe-bottom">
+          <div class="new-comment">
+            <%= render partial: "public/comments/form", locals: { recipe: @recipe, comment: @comment } %>
+          </div>
+          <div id = "comments_area">
+            <%= render partial: "public/comments/comment", locals: { recipe: @recipe } %>
+          </div>
+          </div>
+          
+          
+          
+      </div>
+    </div>

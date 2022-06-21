@@ -1,20 +1,18 @@
-<div class="container">
-  <div class="row">
-    <div class="col-4">
-      <%= render "layouts/category", categories: @categories %>
-    </div>
-      <div class="col-8">
-        <h3>記録詳細</h3>
+<%= render "layouts/category", categories: @categories %>
+<div class="post">
+  <h3 class="text-center contents-title">post details</h3>
+  <div class="post-details">
+      <div class="post-item">
           <div>
            <% if @post.post_image.attached? %>
-            <%= image_tag @post.get_post_image(200,200) %>
+            <%= image_tag @post.get_post_image(250,250) %>
            <% else %>
             <%= image_tag 'no_image', size: "200x200" %>
            <% end %>
           </div>
           <div>
             <%= link_to member_path(@post.member.id) do %>
-            <%= @post.member.name %>
+            <strong><%= @post.member.name %></strong>
             <% end %>
           </div>
           <div>
