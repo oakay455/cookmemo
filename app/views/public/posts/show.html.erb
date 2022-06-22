@@ -20,8 +20,10 @@
             <%= safe_join(@post.body.split("\n"),tag(:br)) %>
           </div>
           <div>
-            <%= link_to "編集する", edit_post_path(@post.id), class: "btn btn-success" %>
-            <%= link_to "削除する", post_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
+            <% if @post.member == current_member || admin_signed_in? %>
+            <%= link_to "編集する", edit_post_path(@post.id), class: "btn btn-outline-secondary" %>
+            <%= link_to "削除する", post_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-outline-danger" %>
+            <% end %>
           </div>
         </div>
       </div>

@@ -46,6 +46,8 @@ scope module: :public do
      resource :relationships, only:[:create, :destroy]
      get 'followings' => 'relationships#followings', as: 'followings'
      get 'followers' => 'relationships#followers', as: 'followers'
+     get 'myrecipe' => 'members#myrecipe', as: 'myrecipe'
+     get 'myalbum' => 'members#myalbum', as: 'myalbum'
      member do
      get :bookmarks #特定のidが必要なため、memberメソッド使用
     end

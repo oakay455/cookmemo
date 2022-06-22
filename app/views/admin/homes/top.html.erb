@@ -1,7 +1,13 @@
-<div>管理者トップページ</div>
-<div>
-  <%= link_to 'カテゴリー管理', admin_categories_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-8 mt-5 offset-4">
+      <h3>管理メニュー</h3>
+      <div>
+        <%= link_to 'カテゴリー管理', admin_categories_path %>
+      </div>
+      <div><%= link_to '会員管理（会員一覧へ）', admin_members_path %></div>
+      <div><%= link_to 'レシピ管理（レシピ一覧へ）', recipes_path %></div>
+      <div><%= link_to 'アルバム管理（アルバム一覧へ）', posts_path %></div>
+    </div>
+  </div>
 </div>
-<div><%= link_to '会員管理（会員一覧へ）', admin_members_path %></div>
-<div><%= link_to 'レシピ管理（レシピ一覧へ）', recipes_path %></div>
-<div>料理投稿管理（料理投稿一覧へ）</div>

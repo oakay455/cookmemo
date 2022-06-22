@@ -1,0 +1,50 @@
+<!--<div><%#<%= link_to "レシピ投稿", new_recipe_path %></div>-->
+<!--<div><%#<%= link_to "料理投稿", new_post_path %></div>-->
+
+<div class="mypage-main">
+
+  <div class="main-side">
+      <div class="user-info">
+        <%= image_tag @member.get_profile_image(300,300) %>
+        <h4><%= @member.name %></h4>
+        <p><%= @member.introduction %></p>
+        <div>フォロー<%= link_to @member.followings.count, member_followings_path(@member) %>
+        フォロワー<%= link_to @member.followers.count, member_followers_path(@member) %>
+        </div>
+        <%= link_to "ブックマークしたレシピ", bookmarks_member_path(@member) %>
+        <div>
+          <% if @member == current_member %>
+          <%= link_to "プロフィール編集", edit_member_path(current_member) %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-post">
+
+      <div class="mypage-recipe">
+        <h4>マイレシピ</h4>
+          <% @recipes.each do |recipe| %>
+          <div class="mypage-recipe-contents">
+            <img class="mypage-recipe-image">
+              <%= link_to recipe_path(recipe.id) do %>
+              <%= image_tag recipe.get_recipe_image(120,120), class: "rounded" %>
+              <% end %>
+            </img>
+            <section class="mypage-recipe-text">
+              <h6><%= recipe.title %></h6>
+              <a><%= link_to "#{recipe.comments.count} コメント", recipe_path(recipe.id) %></a>
+            <% end %>
+            </section>
+          </div>
+      </div>
+
+
+      <div class="mypage-album">
+        <h3>マイアルバム</h3>
+          <%= render 'public/posts/post_index', posts: @posts %>
+      </div>
+
+    </div>
+
+</div>

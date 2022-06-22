@@ -11,9 +11,9 @@
             <!--<div class="recipe-left">-->
               <div class="recipe-image">
                  <% if @recipe.recipe_image.attached? %>
-                  <%= image_tag @recipe.get_recipe_image(300,200) %>
+                  <%= image_tag @recipe.get_recipe_image(300,200), class: "rounded" %>
                  <% else %>
-                  <%= image_tag 'no_image', size: "300x200" %>
+                  <%= image_tag 'no_image', size: "300x200", class: "rounded" %>
                  <% end %>
               </div>
 
@@ -41,17 +41,17 @@
 
           <!--画面右側のテキスト部分    -->
             <!--<div class="recipe-memo">-->
-              <div class="col-5 recipe-text">
-                  <h5><strong><%= @recipe.title %></strong></h5>
+              <div class="col-5 recipe-contents">
+                  <h4><strong><%= @recipe.title %></strong></h4>
                   <p><strong>＜主な具材＞</strong><br>
                   <%= @recipe.ingredient %></p>
                   <p><strong>＜説明＞</strong><br>
                   <!--入力時の改行をビューに反映-->
                   <%= safe_join(@recipe.body.split("\n"),tag(:br)) %></p>
                   <div>
-                    <% if @recipe.member == current_member %>
-                    <%= link_to "編集する", edit_recipe_path(@recipe.id), class: "btn btn-success" %>
-                    <%= link_to "削除する", recipe_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
+                    <% if @recipe.member == current_member || admin_signed_in? %>
+                    <%= link_to "編集する", edit_recipe_path(@recipe.id), class: "btn btn-outline-secondary" %>
+                    <%= link_to "削除する", recipe_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-outline-danger" %>
                     <% end %>
                   </div>
                 </div>

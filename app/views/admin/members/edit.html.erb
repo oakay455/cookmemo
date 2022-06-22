@@ -1,26 +1,25 @@
-<div class="container">
-  <h3 class="bg-light orange d-inline-block px-4 mx-5 mb-3"><i class="fas fa-user dark-brown"></i> <%= @member.name %>さんの会員情報編集</h3>
-
-  <%= form_with model: @member, url: admin_member_path(@member.id), method: :patch do |f| %>
-
-  <div class="form-group-row d-flex">
-    <div class="col-2">会員ID</div>
-    <%= @member.id %>
+<div class="form">
+  <div class="form-title">
+    <%= @member.name %>さんの会員情報編集
   </div>
 
+  <%= form_with model: @member, url: admin_member_path(@member.id), method: :patch do |f| %>
+  <div class="field">
+    会員ID：<strong><%= @member.id %></strong>
+  </div>
+<div class="field">
   <%= render "member_edit", f: f %>
-
-  <div class="form_group-row">
-    <%= f.label :会員ステータス, class: "col-2" %>
+</div>
+  <div class="field">
+    <%= f.label :会員ステータス %>
     <%= f.radio_button :is_deleted, false %>
-    <%= f.label :is_deleted, "有効", class: "mr-3" %>
+    <%= f.label :is_deleted, "有効" %>
     <%= f.radio_button :is_deleted, true %>
     <%= f.label :is_deleted, "退会" %>
   </div>
 
-  <div class="form-group-row d-flex">
-    <div class="col-2"></div>
-    <%= f.submit "変更を保存", class: "btn bg-orange-dark col-2" %>
+  <div class="field">
+    <%= f.submit "変更を保存", class:"btn btn-outline-secondary btn-lg" %>
   </div>
   <% end %>
 </div>

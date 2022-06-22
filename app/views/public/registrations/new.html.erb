@@ -27,10 +27,11 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-  <div class="field">
-    <%= f.submit "Sign up" %>
+  <div class="d-grid gap-2 col-5 mx-auto field">
+    <%= f.submit "Sign up", class: "btn btn-secondary" %>
   </div>
 <% end %>
+
 <div class="field">
 会員登録がお済みの方こちらからログインして下さい→
 <%= render "public/shared/links" %>

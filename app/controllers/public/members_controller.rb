@@ -6,8 +6,18 @@ class Public::MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
-    @recipes = @member.recipes
-    @posts = @member.posts
+    @recipes = @member.recipes.page(params[:page]).per(4)
+    @posts = @member.posts.page(params[:page]).per(6)
+    @categories = Category.all
+  end
+
+  def myrecipe
+    @recipes = Recipe.where(member_id: [current_member.id]).page(params[:page]).per(5)
+    @categories = Category.all
+  end
+  
+  def myalbum
+    @posts = Post.where(member_id: [current_member.id]).page(params[:page]).per(5)
     @categories = Category.all
   end
 

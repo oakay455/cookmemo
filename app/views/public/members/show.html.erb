@@ -1,39 +1,85 @@
-<div><%= link_to "レシピ投稿", new_recipe_path %></div>
-<div><%= link_to "料理投稿", new_post_path %></div>
+<div class="container mypage-main">
 
-<div class="main">
-  <div class="main-side">
-      <div class="user-info">
-        <%= image_tag @member.get_profile_image(300,300) %>
-        <h4><%= @member.name %></h4>
+  <div class="row">
+      <div class="col-2 pt-4 offset-2">
+        <div class="user-info">
+        <%= image_tag @member.get_profile_image(200,200), class: "rounded-circle" %>
+        <h5><%= @member.name %></h5>
         <p><%= @member.introduction %></p>
-        <div>フォロー<%= link_to @member.followings.count, member_followings_path(@member) %>
-        フォロワー<%= link_to @member.followers.count, member_followers_path(@member) %>
+        <p><small>フォロー</small><%= link_to @member.followings.count, member_followings_path(@member) %>
+        <small>フォロワー</small><%= link_to @member.followers.count, member_followers_path(@member) %>
+        </p>
+        <%= link_to bookmarks_member_path(@member) do %>
+        <p><i class="fa-solid fa-bookmark"></i><small>ブックマーク済</small></p>
+         <% end %>
+        <div>
+          <% if @member == current_member %>
+          <%= link_to edit_member_path(current_member), class:'btn btn-outline-secondary btn-block' do %>
+          プロフィール編集
+          <% end %>
+          <% end %>
+          </div>
         </div>
-        <%= link_to "ブックマークしたレシピ", bookmarks_member_path(@member) %>
-      <div>
-        <% if @member == current_member %>
-        <%= link_to "プロフィール編集", edit_member_path(current_member) %>
-        <% end %>
+
+        <div class="link">
+        <div><%= link_to new_recipe_path do %>
+          <p><i class="fa-solid fa-square-pen fa-lg"></i>レシピを投稿する</p>
+          <% end %>
+        </div>
+        <div><%= link_to new_post_path do %>
+          <p><i class="fa-solid fa-image fa-lg"></i>写真を投稿する</p>
+          <% end %>
+        </div>
+        <div>
+          <%= link_to member_myrecipe_path(@recipes) do %>
+          <p>マイレシピをもっと見る</p>
+          <% end %>
+        </div>
+        <div>
+          <%= link_to member_myalbum_path(@posts) do %>
+          <p>マイアルバムをもっと見る</p>
+          <% end %>
+        </div>
       </div>
-    </div>
-    </div>
-    <div class="main-post">
-      <div class="main-recipe">
-      <h4>マイレシピ</h4>
-        <% @recipes.each do |recipe| %>
-      <div>
-          <%= link_to recipe_path(recipe.id) do %>
-          <%= image_tag recipe.get_recipe_image(200,200) %>
-          <% end %>　説明：<%= recipe.body %><br>
-          レシピ名：<%= recipe.title %>
-          <%= link_to "#{recipe.comments.count} コメント", recipe_path(recipe.id) %>
-        <% end %>
+
       </div>
-    </div>
-      <div>
-        <h3>マイアルバム</h3>
-        <%= render 'public/posts/post_index', posts: @posts %>
+
+
+    <div class="col-6 main-post">
+
+      <div class="mypage-recipe">
+        <h5>Recent my recipe</h5>
+          <% @recipes.each do |recipe| %>
+          <div class="card mb-2 pt-1" style="max-width: 530px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img class="mypage-recipe-image">
+                  <%= link_to recipe_path(recipe.id) do %>
+                  <%= image_tag recipe.get_recipe_image(150,150), class: "rounded" %>
+                  <% end %>
+                </img>
+              </div>
+              <div class="col-md-8 mypage-recipe-text">
+                <div class="card-body pt-2">
+                  <h6 class="card-title"><%= recipe.title %></h6>
+                  <p class="card-text"><%= recipe.ingredient %></p>
+                  <a class="card-text"><small class="text-muted">
+                    <%= link_to "#{recipe.comments.count} コメント", recipe_path(recipe.id) %>
+                  </small></a>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <% end %>
       </div>
+
+
+      <div class="mypage-album">
+        <h5>Recent my album</h5>
+          <%= render 'public/posts/post_index', posts: @posts %>
+      </div>
+
     </div>
+</div>
 </div>

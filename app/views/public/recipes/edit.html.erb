@@ -1,6 +1,6 @@
 <div class="form">
   <div class="form-title">  
-    レシピを編集する
+    Editing
   </div>
 <%= render "layouts/errors", obj: @recipe %>
   <%= form_with model: @recipe, url: recipe_path(@recipe.id), method: :patch  do |f| %>
@@ -24,7 +24,7 @@
       <%= f.text_area :body %>
   </div>
   <div class="field">
-    <%= f.submit '編集を保存する' %>
+    <%= f.submit '編集を保存する', class:"btn btn-outline-secondary btn-lg" %>
   </div>
   <% end %>
   </div>

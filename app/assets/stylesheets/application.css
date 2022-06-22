@@ -95,6 +95,7 @@ p {
  margin: 15px;
 }
 
+/*入力フォーム（sign_in,sign_up,投稿）*/
 .form{
  width: 50%;
  text-align: center;
@@ -135,32 +136,59 @@ p {
  line-height: 1.2;
 }
 
-.main{
- width: 90%;
- display:flex;
- justify-content:center;
- margin: 0 auto;
-}
+/*マイページ*/
 
-.main-side{
- width: 30%;
-}
+/*.mypage-main{*/
+/* width: 900px;*/
+/* display:flex;*/
+/* justify-content:center;*/
+/* margin: 0 auto;*/
+/*}*/
 
-.main-post{
- width: 70%;
- margin-left: 20px;
-}
+/*.main-side{*/
+/* width: 220px;*/
+/* margin-right: 30px;*/
+/*}*/
 
  .user-info{
-  border-radius: 15px;
+  border-radius: 10px;
   border-style: solid;
-  border-color: rgb(229,163,149);
+  border-color: silver;
+  border-width: thin;
   box-sizing: border-box;
   margin: 0 auto;
+  margin-top: 10px;
   text-align: center;
   padding: 20px 0;
  }
 
+/*.main-post{*/
+/* width: 650px;*/
+/*}*/
+
+/*.mypage-recipe-contents {*/
+/* display: flex;*/
+/* justify-content: flex-start;*/
+/*}*/
+
+/*.mypage-recipe-image {*/
+/* padding: 10px 0px 10px 10px;*/
+/*}*/
+
+/*.mypage-recipe-text {*/
+/* display: inline-block;*/
+/*}*/
+
+.link {
+ padding-top: 40px;
+}
+
+.mypage-album {
+ display: flex;
+ flex-wrap: wrap;
+}
+
+/*aboutページ*/
  .about{
   text-align: center;
   height: 500px;
@@ -255,8 +283,10 @@ p {
 
 /*レシピ詳細(recipe_show)*/
 
-.recipe-text {
+.recipe-contents {
  color: #5f5f5f;
+ background-color: white;
+ padding: 10px;
 }
 
 .comment {
@@ -337,3 +367,22 @@ p {
  color: #5f5f5f;
 }
 
+/*検索バー装飾*/
+.search {
+ width: 250px;
+ border-radius: 10px;
+ border-width: thin;
+ border-color: gray;
+}
+
+.search-option {
+ border-radius: 5px;
+ border-color: gray;
+ color: gray;
+}
+
+.search-submit {
+ border-radius: 5px;
+ border-color: gray;
+ color: gray;
+}

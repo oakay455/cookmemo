@@ -10,9 +10,9 @@
             <div class="recipe-left">
               <div class="recipe-image">
                <% if @recipe.recipe_image.attached? %>
-                <%= image_tag @recipe.get_recipe_image(200,200) %>
+                <%= image_tag @recipe.get_recipe_image(200,200), class: "rounded" %>
                <% else %>
-                <%= image_tag 'no_image', size: "300x200" %>
+                <%= image_tag 'no_image', size: "300x200", class: "rounded" %>
                <% end %>
               </div>
             
