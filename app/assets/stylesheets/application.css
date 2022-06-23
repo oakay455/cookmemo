@@ -89,10 +89,14 @@ p {
  display:flex;
  justify-content:center;
  align-items:center;
+ background-color: white;
+ padding: 0.8em;
+ margin-bottom: 20px;
 }
 
 .category-item{
- margin: 15px;
+ margin-left: 40px;
+ border-bottom: solid 2px #ffb6c1;
 }
 
 /*入力フォーム（sign_in,sign_up,投稿）*/
@@ -191,8 +195,11 @@ p {
 /*aboutページ*/
  .about{
   text-align: center;
-  height: 500px;
+  height: 600px;
   margin-top: 80px;
+  background-image: url(about.jpg);
+  background-size: cover;
+  background-position: center;
  }
 
  .about-text{
@@ -205,6 +212,12 @@ p {
   animation-name: fade;
   animation-duration: 2.5s;
   animation-iteration-count: 1;
+  background-color: rgba( 0, 0, 0, 0.4);
+  color: white;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
  }
 
  @keyframes fade{

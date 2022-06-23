@@ -35,13 +35,13 @@ class Public::SessionsController < Devise::SessionsController
 
 
   protected
-#会員情報を確認
+#退会しているか判断
   def member_state
-    #memberテーブルからemail情報をもとにmemberのデータを引き出す
+    #入力されたemailからアカウントを取得
     @member = Member.find_by(email: params[:member][:email])
-    #データが引き出せない場合は、処理を終了させる。
+    #アカウントを取得できなかった場合、このメソッドを終了させる。
     return if !@member
-    #パスワードがあってるいる、かつ、退会ステータスがtrueの場合処理を実行する
+    #取得したアカウントのパスワードが一致している、かつ、退会ステータスがtrueかどうかを
     if @member.valid_password?(params[:member][:password]) && @member.is_deleted == true
       flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
       redirect_to new_member_registration_path

@@ -17,6 +17,7 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @categories = Category.all
+    @posts = Post.where(member_id: [current_member.id]).page(params[:page]).per(5)
   end
 
   def index
@@ -40,7 +41,7 @@ class Public::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to member_path(current_member)
+    redirect_to member_myalbum_path(current_member)
   end
 
   private

@@ -1,13 +1,13 @@
 <%= render "layouts/category", categories: @categories %>
 <div class="post">
-  <h3 class="text-center contents-title">post details</h3>
+  <h3 class="text-center contents-title">photo details</h3>
   <div class="post-details">
       <div class="post-item">
           <div>
            <% if @post.post_image.attached? %>
-            <%= image_tag @post.get_post_image(250,250) %>
+            <%= image_tag @post.get_post_image(350,350) %>
            <% else %>
-            <%= image_tag 'no_image', size: "200x200" %>
+            <%= image_tag 'no_image', size: "350x350" %>
            <% end %>
           </div>
           <div>
@@ -15,7 +15,7 @@
             <strong><%= @post.member.name %></strong>
             <% end %>
           </div>
-          <div>
+          <div class="my-4">
             <!--入力時の改行をビューに反映-->
             <%= safe_join(@post.body.split("\n"),tag(:br)) %>
           </div>
@@ -25,6 +25,9 @@
             <%= link_to "削除する", post_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-outline-danger" %>
             <% end %>
           </div>
+          <div class="mt-4 text-cenater">
+        <%= link_to "マイアルバム一覧へ", member_myalbum_path(@posts) %>
+      </div>
         </div>
       </div>
     </div>
