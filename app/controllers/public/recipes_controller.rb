@@ -56,12 +56,23 @@ class Public::RecipesController < ApplicationController
   @bookmark_recipes = current_member.bookmark_recipes.includes(:member).order(created_at: :desc)
  end
 
+
+ def recipe_search
+  @recipes = Recipe.recipe_search(params[:keyword])
+  @category = Category.all
+ end
+ 
+ 
+ def category_search
+  @recipes = Recipe.where(category_id: params[:category_id])
+ end
+
   private
 
   def recipe_params
     params.require(:recipe).permit(:recipe_image, :title, :body, :ingredient, :category_id)
   end
-  
+
   def move_to_login
     unless member_signed_in? || admin_signed_in?
       redirect_to new_member_session_path, notice: 'Please login'

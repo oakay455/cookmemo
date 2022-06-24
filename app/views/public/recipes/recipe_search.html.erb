@@ -1,0 +1,5 @@
+<% if @recipes == [] %>
+<h3 class ="text-center field">検索結果はありません</h3>
+<% else %>
+<%= render 'index', recipes: @recipes, category: @category %>
+<% end %>

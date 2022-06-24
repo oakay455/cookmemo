@@ -40,7 +40,8 @@ end
 scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'
-    get 'search' => 'searches#search', as: 'search'
+    
+ resources :categories, only:[:show]
 
  resources :members do
      resource :relationships, only:[:create, :destroy]
@@ -62,7 +63,7 @@ end
    resources :recipe_favorites, only: [:create, :destroy]
    resources :comments, only:[:create, :destroy]
    resources :bookmarks, only:[:create, :destroy]
-   get :search, on: :collection
+   get :recipe_search, on: :collection
   end
 
  resources :posts do

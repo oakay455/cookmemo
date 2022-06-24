@@ -1,6 +1,6 @@
-<%= render 'layouts/category', categories: @categories %>
+<%= render 'public/categories/category', categories: @categories %>
     <div class="container">
-      <h3 class="text-center mb-5 mt-3 field">recipe details</h3>
+      <h3 class="text-center mb-5 mt-3 title">recipe details</h3>
 
 
           <!--↓ここから画面上部-->
@@ -11,7 +11,7 @@
             <!--<div class="recipe-left">-->
               <div class="recipe-image">
                  <% if @recipe.recipe_image.attached? %>
-                  <%= image_tag @recipe.get_recipe_image(300,200), class: "rounded" %>
+                  <%= image_tag @recipe.get_recipe_image(350,250), class: "rounded" %>
                  <% else %>
                   <%= image_tag 'no_image', size: "300x200", class: "rounded" %>
                  <% end %><br>
