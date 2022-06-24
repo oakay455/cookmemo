@@ -25,17 +25,13 @@ class Recipe < ApplicationRecord
     recipe_image.variant(resize_to_limit: [width, height]).processed
   end
 
-  def self.search_for(content, method)
-    if method == 'perfect'
-      Recipe.where(title: content)
-    elsif method == 'forward'
-      Recipe.where('title LIKE?', content+'%')
-    elsif method == 'backward'
-      Recipe.where('title LIKE?', '%'+content)
+  def self.recipe_search(recipe_search)
+    if recipe_search != ""
+      Recipe.where(['title LIKE(?) OR ingredient LIKE(?) OR body LIKE(?)', "%#{recipe_search}%", "%#{recipe_search}%", "%#{recipe_search}%"])
     else
-      Recipe.where('title LIKE?', '%'+content+'%')
+      Recipe.all
     end
   end
-  
-  
+
+
 end

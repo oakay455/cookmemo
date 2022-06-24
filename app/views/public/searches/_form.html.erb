@@ -1,8 +1,6 @@
   <div class="search-form">
-  <%= form_with url: search_path, method: :get, local: true do |f| %>
-    <%= f.text_field :content, placeholder: "キーワードを入力", class: "search" %>
-    <%= f.select :model, options_for_select({"レシピ"=>"recipe", "ユーザー"=>"member"}), { include_blank: '区分を選択'}, {class: "search-option"} %>
-    <%= f.select :method, options_for_select({"完全一致"=>"perfect", "前方一致"=>"forward", "後方一致"=>"backward", "部分一致"=>"partial"}), { include_blank: 'オプション'}, {class: "search-option"} %>
-    <%= f.submit "検索", class: "search-submit" %>
+  <%= form_with(url: recipe_search_recipes_path, local: true, method: :get) do |f| %>
+  <%= f.text_field :keyword, placeholder: "レシピ検索(キーワードを入力)", class: "search" %>
+  <%= f.submit "検索", class: "search-submit" %>
 <% end %>
 </div>

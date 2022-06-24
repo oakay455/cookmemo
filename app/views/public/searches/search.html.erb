@@ -1,7 +1,0 @@
-<% if @model == 'member' %>
-  <h3>ユーザーから"<%= @content %>"の検索結果</h3>
-  <%= render 'public/members/index', members: @records %>
-<% elsif @model == 'recipe' %>
-  <h3>レシピから"<%= @content %>"の検索結果</h3>
-  <%= render 'public/recipes/index', recipes: @records %>
-<% end %>
