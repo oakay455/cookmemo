@@ -11,7 +11,8 @@ class Public::RecipeFavoritesController < ApplicationController
     recipe_favorite.destroy
   end
 
-   private
+  private
+
   def recipe_params
     @recipe = Recipe.find(params[:recipe_id])
   end

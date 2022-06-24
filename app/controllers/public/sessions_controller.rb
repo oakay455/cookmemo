@@ -43,7 +43,7 @@ class Public::SessionsController < Devise::SessionsController
     return if !@member
     #取得したアカウントのパスワードが一致している、かつ、退会ステータスがtrueかどうかを
     if @member.valid_password?(params[:member][:password]) && @member.is_deleted == true
-      flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
+      flash[:notice] = "退会済みです。新規会員登録をしてご利用ください。"
       redirect_to new_member_registration_path
     end
   end

@@ -1,6 +1,6 @@
 <%= render 'layouts/category', categories: @categories %>
     <div class="container">
-      <h3 class="text-center mb-5 mt-3 contents-title">recipe details</h3>
+      <h3 class="text-center mb-5 mt-3 field">recipe details</h3>
 
 
           <!--↓ここから画面上部-->
@@ -14,6 +14,11 @@
                   <%= image_tag @recipe.get_recipe_image(300,200), class: "rounded" %>
                  <% else %>
                   <%= image_tag 'no_image', size: "300x200", class: "rounded" %>
+                 <% end %><br>
+                 <% if member_signed_in? || admin_signed_in? %>
+                 <%= link_to member_path(current_member.id) do %>
+                 <%= @recipe.member.name %>
+                 <% end %>
                  <% end %>
               </div>
 
@@ -62,7 +67,7 @@
 
           <!--<div class="recipe-bottom">-->
           <div class="row">
-            <div class="col-5 offset-3 mt-5">
+            <div class="col-5 offset-2 mt-5">
 
 
               <div class="new-comment">

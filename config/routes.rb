@@ -53,6 +53,11 @@ scope module: :public do
     end
 end
 
+
+# 退会確認画面、論理削除用のルーティング
+ get '/members/:id/unsubscribe' => 'members#unsubscribe', as: 'unsubscribe'
+ patch '/members/:id/withdraw' => 'members#withdraw', as: 'withdraw'
+
  resources :recipes do
    resources :recipe_favorites, only: [:create, :destroy]
    resources :comments, only:[:create, :destroy]
@@ -66,13 +71,5 @@ end
 
   end
 
-  # get 'members/mypage' => 'members#show', as:'mypage'
-  # get 'members/edit' => 'members#edit'
-
- # 退会確認画面
- get '/members/:id/unsubscribe' => 'members#unsubscribe', as: 'unsubscribe'
- 
- # 論理削除用のルーティング
- patch '/members/:id/withdraw' => 'members#withdraw', as: 'withdraw'
 
  end

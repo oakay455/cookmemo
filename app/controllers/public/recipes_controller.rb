@@ -1,5 +1,5 @@
 class Public::RecipesController < ApplicationController
- # before_action :authenticate_member!
+ before_action :move_to_login, except:[:show, :index] #ログインユーザーと管理者のみコメント権限を持たせ、未ログインの場合はログイン画面に遷移
 
  def new
    @recipe = Recipe.new
@@ -10,7 +10,8 @@ class Public::RecipesController < ApplicationController
    @recipe = Recipe.new(recipe_params)
    @recipe.member_id = current_member.id
   if @recipe.save
-      redirect_to recipe_path(@recipe.id)
+   flash[:notice] = 'You have created recipe successfully.'
+   redirect_to recipe_path(@recipe.id)
   else
     @categories = Category.all
       render "new"
@@ -43,6 +44,7 @@ class Public::RecipesController < ApplicationController
  def update
  @recipe = Recipe.find(params[:id])
  if @recipe.update(recipe_params)
+  flash[:notice] = 'You have updated recipe successfully.'
   redirect_to recipe_path(@recipe.id)
  else
   @categories = Category.all
@@ -53,10 +55,16 @@ class Public::RecipesController < ApplicationController
  def bookmarks
   @bookmark_recipes = current_member.bookmark_recipes.includes(:member).order(created_at: :desc)
  end
- 
+
   private
 
   def recipe_params
     params.require(:recipe).permit(:recipe_image, :title, :body, :ingredient, :category_id)
+  end
+  
+  def move_to_login
+    unless member_signed_in? || admin_signed_in?
+      redirect_to new_member_session_path, notice: 'Please login'
+    end
   end
 end

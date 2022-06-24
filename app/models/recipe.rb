@@ -36,4 +36,6 @@ class Recipe < ApplicationRecord
       Recipe.where('title LIKE?', '%'+content+'%')
     end
   end
+  
+  
 end

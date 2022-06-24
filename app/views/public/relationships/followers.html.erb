@@ -1,6 +1,6 @@
-<h2>Follower Users</h2>
+<h2 class="text-center field">Your followers</h2>
 <% if @members.exists? %>
   <%= render 'public/members/index', members: @members %>
 <% else %>
-  <p>ユーザーはいません</p>
+  <p class="text-center">フォロワーはいません</p>
 <% end %>

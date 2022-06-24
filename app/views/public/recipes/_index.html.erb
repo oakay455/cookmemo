@@ -4,9 +4,9 @@
       <div class="col-md-4 pt-1">
         <img class="recipe-image"><%= link_to recipe_path(recipe) do %>
           <% if recipe.recipe_image.attached? %>
-            <%= image_tag recipe.recipe_image, size: "200x200", class: "rounded" %>
+            <%= image_tag recipe.recipe_image, size: "170x170", class: "rounded" %>
             <% else %>
-              <%= image_tag 'no_image', size: "200x200", class: "rounded" %>
+              <%= image_tag 'no_image', size: "170x170", class: "rounded" %>
             <% end %>
           <% end %>
         </img>

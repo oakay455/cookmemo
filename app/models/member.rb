@@ -81,4 +81,5 @@ class Member < ApplicationRecord
   def favorited_by?(recipe_id)
     recipe_favorites.where(recipe_id: recipe_id).exists?
   end
+  
 end

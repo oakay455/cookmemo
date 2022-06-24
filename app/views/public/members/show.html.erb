@@ -1,7 +1,29 @@
-<div class="container mypage-main">
+<div class="container">
 
-  <div class="row">
-      <div class="col-2 pt-4 offset-2">
+  <div class="row pt-4">
+      <div class="col-2 offset-2">
+
+        <div class="link">
+        <div><%= link_to new_recipe_path do %>
+          <p><i class="fa-solid fa-square-pen fa-lg"></i>レシピを投稿する</p>
+          <% end %>
+        </div>
+        <div><%= link_to new_post_path do %>
+          <p><i class="fa-solid fa-image fa-lg"></i>写真を投稿する</p>
+          <% end %>
+        </div>
+        <div>
+          <%= link_to member_myrecipe_path(@recipes) do %>
+          <p>マイレシピ一覧</p>
+          <% end %>
+        </div>
+        <div>
+          <%= link_to member_myalbum_path(@posts) do %>
+          <p>マイアルバム一覧</p>
+          <% end %>
+        </div>
+      </div>
+
         <div class="user-info">
         <%= image_tag @member.get_profile_image(150,150), class: "rounded-circle" %>
         <h5><%= @member.name %></h5>
@@ -21,34 +43,14 @@
           </div>
         </div>
 
-        <div class="link">
-        <div><%= link_to new_recipe_path do %>
-          <p><i class="fa-solid fa-square-pen fa-lg"></i>レシピを投稿する</p>
-          <% end %>
-        </div>
-        <div><%= link_to new_post_path do %>
-          <p><i class="fa-solid fa-image fa-lg"></i>写真を投稿する</p>
-          <% end %>
-        </div>
-        <div>
-          <%= link_to member_myrecipe_path(@recipes) do %>
-          <p>マイレシピをもっと見る</p>
-          <% end %>
-        </div>
-        <div>
-          <%= link_to member_myalbum_path(@posts) do %>
-          <p>マイアルバムをもっと見る</p>
-          <% end %>
-        </div>
-      </div>
-
       </div>
 
 
     <div class="col-6 main-post">
 
       <div class="mypage-recipe">
-        <h5>Recent my recipe</h5>
+        <h5 class="field">Recent my recipe</h5>
+          <% if @recipes.exists? %>
           <% @recipes.each do |recipe| %>
           <div class="card mb-2 pt-1" style="max-width: 530px;">
             <div class="row g-0">
@@ -72,14 +74,20 @@
             </div>
           </div>
           <% end %>
+          <% else %>
+          <p>まだありません</p>
+          <% end %>
       </div>
 
 
       <div class="mypage-album">
-        <h5>Recent my album</h5>
+        <h5 class="field">Recent my album</h5>
+        <% if @posts.exists? %>
           <%= render 'public/posts/post_index', posts: @posts %>
+        <% else %>
       </div>
-
+        <p>まだありません</p>
+        <% end %>
     </div>
-</div>
+  </div>
 </div>
