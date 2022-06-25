@@ -1,83 +1,60 @@
 <%= render 'public/categories/category', categories: @categories %>
     <div class="container">
       <h3 class="text-center mb-5 mt-3 title">recipe details</h3>
-
-
-          <!--↓ここから画面上部-->
-          <div class="row">
-            <div class="col-4 offset-2">
-
-          <!--画面左側部分-->
-            <!--<div class="recipe-left">-->
-              <div class="recipe-image">
-                 <% if @recipe.recipe_image.attached? %>
-                  <%= image_tag @recipe.get_recipe_image(350,250), class: "rounded" %>
-                 <% else %>
-                  <%= image_tag 'no_image', size: "300x200", class: "rounded" %>
-                 <% end %><br>
-                 <% if member_signed_in? || admin_signed_in? %>
-                 <%= link_to member_path(current_member.id) do %>
-                 <%= @recipe.member.name %>
-                 <% end %>
-                 <% end %>
-              </div>
-
-
-              <!--<div class="recipe-like">-->
-              <div class="fav-bookmark">
-                <div class="recipe-category">
-                <%= @recipe.category.name %>
-                </div>
-                <div class="icon-position">
-                  <div id = "favorite_<%= @recipe.id %>">
-                    <%= render partial: "public/recipe_favorites/recipe_favorite", locals: { recipe: @recipe } %>
-                  </div>
-                </div>
-                <div class="icon-position">
-                  <div id = "bookmark_<%= @recipe.id %>">
-                    <%= render partial: "public/bookmarks/bookmark", locals: { recipe: @recipe } %>
-                  </div>
-                </div>
-              </div>
-
+        <div class="row">
+          <!--左サイド部分-->
+          <div class="col-4 offset-2">
+            <div class="recipe-image">
+               <% if @recipe.recipe_image.attached? %>
+                <%= image_tag @recipe.get_recipe_image(350,250), class: "rounded" %>
+               <% else %>
+                <%= image_tag 'no_image', size: "300x200", class: "rounded" %>
+               <% end %><br>
+                 <%= link_to @recipe.member.name, member_path(@member) %>
             </div>
-
-
-
-          <!--画面右側のテキスト部分    -->
-            <!--<div class="recipe-memo">-->
-              <div class="col-5 recipe-contents">
-                  <h4><strong><%= @recipe.title %></strong></h4>
-                  <p><strong>＜主な具材＞</strong><br>
-                  <%= @recipe.ingredient %></p>
-                  <p><strong>＜説明＞</strong><br>
-                  <!--入力時の改行をビューに反映-->
-                  <%= safe_join(@recipe.body.split("\n"),tag(:br)) %></p>
-                  <div>
-                    <% if @recipe.member == current_member || admin_signed_in? %>
-                    <%= link_to "編集する", edit_recipe_path(@recipe.id), class: "btn btn-outline-secondary" %>
-                    <%= link_to "削除する", recipe_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-outline-danger" %>
-                    <% end %>
-                  </div>
+            <div class="fav-bookmark">
+              <div class="recipe-category">
+                <%= @recipe.category.name %>
+              </div>
+              <div class="icon-position">
+                <div id = "favorite_<%= @recipe.id %>">
+                  <%= render partial: "public/recipe_favorites/recipe_favorite", locals: { recipe: @recipe } %>
                 </div>
-
               </div>
-          <!--↑ここまで画面上部-->
-
-
-          <!--<div class="recipe-bottom">-->
-          <div class="row">
-            <div class="col-5 offset-2 mt-5">
-
-
-              <div class="new-comment">
-                <%= render partial: "public/comments/form", locals: { recipe: @recipe, comment: @comment } %>
+              <div class="icon-position">
+                <div id = "bookmark_<%= @recipe.id %>">
+                  <%= render partial: "public/bookmarks/bookmark", locals: { recipe: @recipe } %>
+                </div>
               </div>
-              <div id = "comments_area">
-                <%= render partial: "public/comments/comment", locals: { recipe: @recipe } %>
-              </div>
-
+            </div>
+          </div>
+          <!--画面右側のテキスト部分    -->
+          <div class="col-5 recipe-contents">
+            <h4><strong><%= @recipe.title %></strong></h4>
+            <p><strong>＜主な具材＞</strong><br>
+            <%= @recipe.ingredient %></p>
+            <p><strong>＜説明＞</strong><br>
+              <!--入力時の改行をビューに反映-->
+            <%= safe_join(@recipe.body.split("\n"),tag(:br)) %></p>
+            <div>
+              <% if @recipe.member == current_member || admin_signed_in? %>
+                <%= link_to "編集する", edit_recipe_path(@recipe.id), class: "btn btn-outline-secondary" %>
+                <%= link_to "削除する", recipe_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-outline-danger" %>
+            　<% end %>
             </div>
           </div>
 
         </div>
+          <!--コメント部分-->
+        <div class="row">
+          <div class="col-5 offset-2 mt-5">
+            <div>
+              <%= render partial: "public/comments/form", locals: { recipe: @recipe, comment: @comment } %>
+            </div>
+            <div id = "comments_area">
+              <%= render partial: "public/comments/comment", locals: { recipe: @recipe } %>
+            </div>
+          </div>
+        </div>
+
+    </div>

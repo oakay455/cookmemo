@@ -1,30 +1,30 @@
 <div class="form">
-  <div class="form-title">  
+  <div class="form-title">
     Editing
   </div>
 <%= render "layouts/errors", obj: @recipe %>
-  <%= form_with model: @recipe, url: recipe_path(@recipe.id), method: :patch  do |f| %>
+<%= form_with model: @recipe, url: recipe_path(@recipe.id), method: :patch  do |f| %>
   <div class="field">
     <%= f.file_field :recipe_image, accept: "image/*" %>
   </div>
   <div class="field">
-   <%= f.label :カテゴリー %>
-   <%= f.collection_select(:category_id, @categories, :id, :name, {prompt: "--選択してください--"}) %>
+    <%= f.label :カテゴリー %>
+    <%= f.collection_select(:category_id, @categories, :id, :name, {prompt: "--選択してください--"}) %>
   </div>
   <div class="field">
     <%= f.label :タイトル %>
-      <%= f.text_field :title %>
+    <%= f.text_field :title %>
   </div>
   <div class="field">
     <%= f.label :材料 %>
-      <%= f.text_field :ingredient %>
+    <%= f.text_field :ingredient %>
   </div>
   <div class="field">
     <%= f.label :説明 %>
-      <%= f.text_area :body %>
+    <%= f.text_area :body %>
   </div>
   <div class="field">
     <%= f.submit '編集を保存する', class:"btn btn-outline-secondary btn-lg" %>
   </div>
   <% end %>
-  </div>
+</div>

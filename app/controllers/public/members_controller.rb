@@ -1,23 +1,16 @@
 class Public::MembersController < ApplicationController
   before_action :set_member, only:[:bookmarks]
   before_action :ensure_guest_user, only: [:edit]
-  # before_action :authenticate_member!
-  # before_action :ensure_correct_member, only: [:show, :edit, :update]
+  before_action :move_to_login #ログインユーザーと管理者のみコメント権限を持たせ、未ログインの場合はログイン画面に遷移
 
   def show
     @member = Member.find(params[:id])
-    @recipes = @member.recipes.order(created_at: :desc).page(params[:page]).per(3)
-    @posts = @member.posts.order(created_at: :desc).page(params[:page]).per(6)
+    @recipes = @member.recipes.order(created_at: :desc).page(params[:page]).per(8)
     @categories = Category.all
   end
 
   def myrecipe
-    @recipes = Recipe.where(member_id: [current_member.id]).order(created_at: :desc).page(params[:page]).per(5)
-    @categories = Category.all
-  end
-
-  def myalbum
-    @posts = Post.where(member_id: [current_member.id]).order(created_at: :desc).page(params[:page]).per(5)
+    @recipes = Recipe.where(member_id: [current_member.id]).order(created_at: :desc).page(params[:page]).per(12)
     @categories = Category.all
   end
 
@@ -74,5 +67,11 @@ class Public::MembersController < ApplicationController
 
   def set_member
     @member = Member.find(params[:id])
+  end
+
+  def move_to_login
+    unless member_signed_in? || admin_signed_in?
+      redirect_to new_member_session_path, notice: 'Please login'
+    end
   end
 end

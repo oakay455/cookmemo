@@ -1,7 +1,7 @@
 <% if current_member != member %>
-  <% if current_member.following?(member) %>
-    <%= link_to "フォロー中", member_relationships_path(member.id), method: :delete, class: "btn btn-outline-secondary px-4" %>
+  <% if current_member.following?(member)%>
+    <%= link_to "フォロー中", member_relationships_path(member.id), method: :delete, class: "btn btn-outline-secondary rounded-pill px-4" %>
   <% else %>
-    <%= link_to "フォローする", member_relationships_path(member.id), method: :post, class: "btn btn-primary text-white px-3" %>
+    <%= link_to "フォローする", member_relationships_path(member.id), method: :post, class: "btn btn-primary text-white rounded-pill px-3" %>
   <% end %>
 <% end %>

@@ -39,10 +39,9 @@ p {
  width: 75%;
  height: 700px;
  margin:0 auto;
- background-image:url(bg-1.jpg);
+ background-image: url(bg-1.jpg);
  background-size: cover;
  background-position: center;
- border-radius: 10px;
  display: flex;
  justify-content: center;
  align-items: center;
@@ -51,9 +50,6 @@ p {
  .top-text{
   text-align: center;
   font-family: 'Caveat', cursive;
-  /*font-family: 'Sacramento', cursive;*/
-  /*font-family: 'Josefin Slab', serif;*/
-  /*font-family: 'Montserrat', sans-serif;*/
   font-weight: 200;
   animation-name: fade;
   animation-duration: 2s;
@@ -83,44 +79,55 @@ p {
 
 
 /*aboutページ*/
-.top-body {
-  text-align: center;
-  height: 700px;
-  margin-top: 80px;
-  background-size: cover;
-  background-position: center;
+ .about {
+  width: 80%;
+  height: 500px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
  }
 
+ .about-image {
+  width: 350px;
+  height: 500px;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  background-image: url(about.jpg);
+ }
+
+ .about-text {
+  margin-left: 20px;
+  font-size: 25px;
+  line-height: 45px;
+ }
+
+/*フラッシュメッセージ*/
 .notice{
  background-color: #fff799;
  text-align: center;
  color: gray;
 }
 
+/*フッター*/
 .footer-text{
  width: 100%;
  height: 120px;
  text-align: center;
  line-height: 120px;
- /*font-family: 'Caveat', cursive;*/
  font-family: 'Montserrat', sans-serif;
  font-weight: 400;
 }
 
+/*ヘッダー*/
 .navbar-brand{
- /*font-size: 20px;*/
  font-family: 'Caveat', cursive;
  padding:0px 5px;
- /*font-family: 'Montserrat', sans-serif;*/
  color: #FFFFDD;
- /*background: #efefef;*/
- /*border-radius: 240px 15px 100px 15px / 15px 200px 15px 185px;*/
- /*border: 2px solid #333;*/
- /*background: #adffd6;*/
- /*border-radius: solid;*/
- /* border-radius: 80% 30% 50% 50%/50%;*/
+ background: #fce4d6;
+ border-radius: 80% 30% 50% 50%/50%;
 }
-
 
 .navbar-nav{
  margin-left: auto;
@@ -136,6 +143,7 @@ p {
  padding:0 5px;
 }
 
+/*カテゴリー*/
 .category-body{
  display:flex;
  justify-content:center;
@@ -164,7 +172,7 @@ p {
 }
 
 .field{
- /*margin-top: 20px;*/
+ margin-top: 20px;
  color: gray;
 }
 
@@ -174,7 +182,6 @@ p {
  color: gray;
  padding: 10px;
 }
-
 
 .text-line{
  border-style: solid;
@@ -208,6 +215,11 @@ p {
   padding: 20px 0;
  }
 
+ .user-name {
+  color: gray;
+  font-family: 'Caveat', cursive;
+ }
+
 .link {
  padding-top: 30px;
  border-radius: 10px;
@@ -219,12 +231,32 @@ p {
  margin-top: 10px;
  text-align: center;
  padding: 20px 0;
-
 }
 
-.mypage-album {
+.post-wrap {
  display: flex;
  flex-wrap: wrap;
+ width: 800px;
+ margin:0 auto;
+}
+
+.post-box {
+ width: 170px;
+ height: 200px;
+ margin: 10px;
+ position: relative;
+}
+
+.post-content {
+ width: 200px;
+ position: absolute;
+ left: 0;
+ bottom: 0;
+}
+
+.post-body {
+ color: #5f5f5f;
+ font-size: 15px;
 }
 
 /*レシピ一覧(recipe_index)*/
@@ -241,7 +273,8 @@ p {
 .recipe-contents {
  color: #5f5f5f;
  background-color: white;
- padding: 10px;
+ padding: 15px;
+ padding-left: 20px;
  background-image: linear-gradient(0deg, transparent calc(100% - 1px), #f0f0f0 calc(100% - 1px)),
                    linear-gradient(90deg, transparent calc(100% - 1px), #f0f0f0 calc(100% - 1px));
   background-size: 16px 16px;
@@ -279,51 +312,6 @@ p {
   margin-left: 10px;
 }
 
-/*アルバム一覧(post index)*/
-.post-wrap {
- display: flex;
- flex-wrap: wrap;
- width: 800px;
- margin:0 auto;
-}
-
-.post-box {
- width: 170px;
- height: 200px;
- margin: 10px;
- position: relative;
-}
-
-.post-content {
- width: 200px;
- position: absolute;
- left: 0;
- bottom: 0;
-}
-
-.post-body {
- color: #5f5f5f;
- font-size: 15px;
-}
-
-/*アルバム詳細(post_show)*/
-.post {
- width: 75%;
- margin: 0px auto;
- padding: 20px 0px;
-}
-
-.post-details {
- width: 40%;
- background-color: white;
- margin: 0 auto;
-}
-
-.post-item {
- text-align: center;
- padding:10px 0px;
-}
-
 /*検索バー装飾*/
 .search {
  width: 250px;
@@ -349,8 +337,13 @@ p {
 table td,
 table th {
  padding-bottom: 15px;
- border-bottom: 1px solid white;
+ border-bottom: 1px solid #c1a470;
  text-align: center;
  font-size: 20px;
  color: #5f5f5f;
+}
+
+.btn-primary {
+ background-color: #05ED00 !important;
+ border-color: #05ED00 !important;
 }

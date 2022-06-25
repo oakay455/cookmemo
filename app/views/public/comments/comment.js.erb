@@ -1,5 +1,5 @@
 <!--id="comments_areaにをrenderで指定した部分テンプレートに更新-->
 $("#comments_area").html("<%= j(render 'public/comments/comment', recipe: @recipe, comment: @comment) %>");
-<!--フォームを送信したあとにフォームの値を空にします-->
+<!--フォームを送信したあとにフォームの値を空にする-->
 $("textarea").val('');
 $('#flash-message').html("<%= j(render 'layouts/notice') %>");

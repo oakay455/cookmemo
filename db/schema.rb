@@ -90,13 +90,6 @@ ActiveRecord::Schema.define(version: 2022_06_13_061550) do
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end
 
-  create_table "posts", force: :cascade do |t|
-    t.integer "member_id", null: false
-    t.text "body", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "recipe_favorites", force: :cascade do |t|
     t.integer "member_id"
     t.integer "recipe_id"
