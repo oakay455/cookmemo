@@ -66,9 +66,6 @@ end
    get :recipe_search, on: :collection
   end
 
-#  resources :posts do
-#   resource :favorites, only: [:create, :destroy]
-#   end
 
   end
 
