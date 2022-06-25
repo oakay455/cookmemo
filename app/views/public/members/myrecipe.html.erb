@@ -1,6 +1,6 @@
 <%= render "public/categories/category", categories: @categories %>
-<h3 class="text-center title">All my recipes</h3>
-<%= render "public/recipes/index", recipes: @recipes %>
-<div class="d-flex justify-content-center">
-<%= paginate @recipes %>
-</div>
+  <h3 class="text-center title">All my recipes</h3>
+    <%= render "myrecipe", recipes: @recipes %>
+    <div class="d-flex justify-content-center">
+      <%= paginate @recipes %>
+    </div>

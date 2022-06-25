@@ -34,6 +34,7 @@ class Public::RecipesController < ApplicationController
   @recipe = Recipe.find(params[:id])
   @categories = Category.all
   @comment = Comment.new
+  @member = @recipe.member
  end
 
  def edit
@@ -61,8 +62,8 @@ class Public::RecipesController < ApplicationController
   @recipes = Recipe.recipe_search(params[:keyword])
   @category = Category.all
  end
- 
- 
+
+
  def category_search
   @recipes = Recipe.where(category_id: params[:category_id])
  end

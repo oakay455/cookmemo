@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'searches/search'
-  # 会員用device
+# 会員用device
 # URL /members/sign_in ...
 devise_for :members,skip: [:passwords], controllers: {
   registrations: "public/registrations",
@@ -66,9 +66,9 @@ end
    get :recipe_search, on: :collection
   end
 
- resources :posts do
-   resource :favorites, only: [:create, :destroy]
-  end
+#  resources :posts do
+#   resource :favorites, only: [:create, :destroy]
+#   end
 
   end
 
