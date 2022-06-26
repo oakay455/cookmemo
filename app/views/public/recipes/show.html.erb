@@ -8,7 +8,7 @@
                <% if @recipe.recipe_image.attached? %>
                 <%= image_tag @recipe.get_recipe_image(350,250), class: "rounded" %>
                <% else %>
-                <%= image_tag 'no_image', size: "300x200", class: "rounded" %>
+                <%= image_tag 'no_image.jpg', size: "300x200", class: "rounded" %>
                <% end %><br>
                  <%= link_to @recipe.member.name, member_path(@member) %>
             </div>

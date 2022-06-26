@@ -7,11 +7,11 @@ class Public::RecipesController < ApplicationController
  end
 
  def create
-   @recipe = Recipe.new(recipe_params)
-   @recipe.member_id = current_member.id
-  if @recipe.save
+   recipe = Recipe.new(recipe_params)
+   recipe.member_id = current_member.id
+  if recipe.save
    flash[:notice] = 'You have created recipe successfully.'
-   redirect_to recipe_path(@recipe.id)
+   redirect_to recipe_path(recipe.id)
   else
     @categories = Category.all
       render "new"

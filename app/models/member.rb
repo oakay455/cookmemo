@@ -8,7 +8,6 @@ class Member < ApplicationRecord
   validates :name, length: {in:2..20}
   validates :introduction, length: {maximum:50}
 
-  has_many :posts, dependent: :destroy
   has_many :recipes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :recipe_favorites, dependent: :destroy
@@ -23,7 +22,7 @@ class Member < ApplicationRecord
   # has_many :bookmarked_recipes, through: :bookmarks, source: :recipe
 
   has_one_attached :profile_image
-  
+
   def self.guest
     find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |member|
       member.password = SecureRandom.urlsafe_base64
@@ -81,5 +80,5 @@ class Member < ApplicationRecord
   def favorited_by?(recipe_id)
     recipe_favorites.where(recipe_id: recipe_id).exists?
   end
-  
+
 end

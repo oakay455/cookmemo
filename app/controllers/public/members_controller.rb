@@ -20,6 +20,7 @@ class Public::MembersController < ApplicationController
 
   def update
     @member = Member.find(params[:id])
+    # @member.profile_image.attach(params[:member][:profile_image])
     if @member.update(member_params)
       redirect_to member_path(@member.id)
     else
