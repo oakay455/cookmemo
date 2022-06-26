@@ -21,7 +21,7 @@
       <div class="user-info">
         <%= image_tag @member.get_profile_image(150,150), class: "rounded-circle" %>
         <h5 class="user-name"><%= @member.name %></h5>
-        <p><%= @member.introduction %></p>
+        <p><%= simple_format(@member.introduction) %></p>
         <p>
           <small>フォロー</small><%= link_to @member.followings.count, member_followings_path(@member) %>
           <small>フォロワー</small><%= link_to @member.followers.count, member_followers_path(@member) %>
