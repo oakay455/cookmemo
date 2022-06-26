@@ -141,7 +141,7 @@ p {
 /*ヘッダー*/
 .navbar-brand{
  font-family: 'Caveat', cursive;
- font-size: 35px;
+ font-size: 35px!important;
  padding:0px 5px;
  color: #FFFFDD;
  background: #fce4d6;
