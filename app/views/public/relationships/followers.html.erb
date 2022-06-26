@@ -1,4 +1,4 @@
-<div class="text-center title">Your followers</div>
+<h1 class="text-center form-title">Your followers</h1>
 <% if @members.exists? %>
   <%= render 'public/members/index', members: @members %>
 <% else %>

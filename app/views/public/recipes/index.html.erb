@@ -1,5 +1,8 @@
 <%= render 'public/categories/category', categories: @categories %>
 <div class="container center-block">
-    <h3 class="text-center title">New arrival recipes!</h3>
+    <h1 class="text-center form-title">New arrival recipes!</h1>
     <%= render "index", recipes: @recipes %>
+    <div class="d-flex justify-content-center">
+        <%= paginate @recipes%>
+    </div>
 </div>

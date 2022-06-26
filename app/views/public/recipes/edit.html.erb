@@ -1,7 +1,7 @@
 <div class="form">
-  <div class="form-title">
+  <h1 class="form-title">
     Editing
-  </div>
+  </h1>
 <%= render "layouts/errors", obj: @recipe %>
 <%= form_with model: @recipe, url: recipe_path(@recipe.id), method: :patch  do |f| %>
   <div class="field">

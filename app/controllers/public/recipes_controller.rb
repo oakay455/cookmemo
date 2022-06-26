@@ -26,7 +26,7 @@ class Public::RecipesController < ApplicationController
 
  def index
   #投稿が新しい順に並べて表示
-  @recipes = Recipe.all.order(created_at: :desc)
+  @recipes = Recipe.all.order(created_at: :desc).page(params[:page]).per(10)
   @categories = Category.all
  end
 
