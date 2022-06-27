@@ -159,6 +159,29 @@ p {
 .navbar-toggler {
  border-color: #726250 !important;
 }
+
+/*レシピ検索バー装飾*/
+.recipe-search {
+ height: 40px;
+ position: relative;
+ width: 270px;
+ padding: 0;
+ margin: 0 10px 0 0;
+ border-radius: 100px 0 0 100px;
+ outline:0;
+}
+
+.search-submit {
+ height: 40px;
+ width: 70px;
+ border-radius: 0 100px 100px 0;
+ border: none;
+ background-color: #000000;
+ position:relative;
+ right: 20px;
+ color: white;
+}
+
 /*カテゴリー*/
 .category-body{
  display:flex;
@@ -171,7 +194,7 @@ p {
 
 .category-item{
  margin-left: 40px;
- color: white;
+ color: white ;
 }
 
 /*入力フォーム（sign_in,sign_up,投稿）*/
@@ -325,18 +348,23 @@ p {
   margin-left: 10px;
 }
 
-/*検索バー装飾*/
-.search {
- width: 250px;
- border-radius: 10px;
- border-color: gray;
- color: gray;
+/*ユーザー検索バー装飾*/
+.member_search_box {
+ outline:0;
+ border-radius:15px;
+ border: none;
+ height:35px;
+ max-width:300px;
+ background-color: #eee7e0
 }
 
-.search-submit {
- border-radius: 5px;
- border-color: gray;
- color: gray;
+.member_search_submit {
+ height:35px;
+ border-radius:15px;
+ background: #eee7e0;
+ border: none;
+ border-width: thin;
+ color: #5f5f5f;
 }
 
 /*ユーザー一覧画面*/

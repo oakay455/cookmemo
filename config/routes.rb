@@ -25,7 +25,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
 namespace :admin do
 root to: 'homes#top'
-get "search" => "searches#search", as: 'search'
+# get "search" => "searches#search", as: 'search'
 resources :members, only: [:index,:show,:edit,:update] do
    get 'recipe_index' => 'members#recipe_index'
 end
@@ -49,8 +49,11 @@ scope module: :public do
      get 'followers' => 'relationships#followers', as: 'followers'
      get 'myrecipe' => 'members#myrecipe', as: 'myrecipe'
      get 'myalbum' => 'members#myalbum', as: 'myalbum'
+     collection do
+        get 'member_search'
+     end
      member do
-     get :bookmarks #特定のidが必要なため、memberメソッド使用
+        get :bookmarks #特定のidが必要なため、memberメソッド使用
     end
 end
 

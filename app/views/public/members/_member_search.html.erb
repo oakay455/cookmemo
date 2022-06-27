@@ -1,0 +1,6 @@
+<div class="member_search">
+<%= form_with(url: member_search_members_path, local: true, method: :get ) do |form| %>
+  <%= form.text_field :keyword, placeholder: "ユーザー検索", class: "member_search_box" %>
+  <%= form.submit "検索", class: "member_search_submit" %>
+<% end %>
+</div>
