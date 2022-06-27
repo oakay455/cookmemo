@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row pt-5">
-    <div class="col-2 offset-2">
+    <div class="col-12 col-md-2 offset-md-2">
       <div class="link">
         <div><%= link_to new_recipe_path do %>
           <p><i class="fa-solid fa-pen-to-square fa-lg"></i><strong>レシピを投稿する</strong></p>
@@ -36,7 +36,7 @@
         </div>
       </div>
 
-    <div class="col-7 main-post">
+    <div class="col-12 col-md-7 main-post">
       <h2 class="mypage-title">Recent my recipe</h2>
         <% if @recipes.exists? %>
           <div class="post-wrap">

@@ -97,11 +97,6 @@ ActiveRecord::Schema.define(version: 2022_06_13_061550) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "recipe_tags", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "recipes", force: :cascade do |t|
     t.integer "member_id", null: false
     t.integer "category_id", null: false
@@ -115,11 +110,6 @@ ActiveRecord::Schema.define(version: 2022_06_13_061550) do
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "tags", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

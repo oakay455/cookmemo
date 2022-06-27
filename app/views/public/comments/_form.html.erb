@@ -3,7 +3,7 @@
     <%= render 'layouts/errors', obj: comment %>
   </div>
   <div class="comment-form">
-    <%= f.text_area :comment, placeholder: "コメントをここに", class: "w-100" %>
+    <%= f.text_area :comment, placeholder: "コメントをここに", class: "w-100 border border-3 rounded" %>
     <%= f.submit "送信する", class: "btn btn-primary text-white rounded-pill px-3" %>
   <% end %>
   </div>
