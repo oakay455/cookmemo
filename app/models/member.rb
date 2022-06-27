@@ -38,15 +38,11 @@ class Member < ApplicationRecord
   profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
-  def self.search_for(content, method)
-    if method == 'perfect'
-      Member.where(name: content)
-    elsif method == 'forward'
-      Member.where('name LIKE?', content+'%')
-    elsif method == 'backward'
-      Member.where('name LIKE?', '%'+content)
+  def self.member_search(member_search)
+    if member_search != ""
+      Member.where('name LIKE(?)', "%#{member_search}%")
     else
-      Member.where('name LIKE?', '%'+content+'%')
+      Member.all
     end
   end
 

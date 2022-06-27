@@ -1,0 +1,12 @@
+<% if @members == [] %>
+  <h1 class ="text-center form-title">No users...</h1>
+  <div class="d-flex justify-content-center">
+  <%= render "member_search", members: @members %>
+  </div>
+  <% else %>
+  <h1 class="text-center form-title">search results<i class="fa-solid fa-user-group fa-sm"></i></h1>
+  <div class="d-flex justify-content-center">
+  <%= render "member_search", members: @members %>
+  </div>
+  <%= render 'index', members: @members %>
+<% end %>

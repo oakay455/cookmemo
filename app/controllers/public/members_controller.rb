@@ -44,6 +44,10 @@ class Public::MembersController < ApplicationController
     bookmarks = Bookmark.where(member_id: @member.id).pluck(:recipe_id)
     @bookmark_recipes = Recipe.find(bookmarks)
   end
+  
+  def member_search
+    @members = Member.member_search(params[:keyword])
+  end
 
   private
 
