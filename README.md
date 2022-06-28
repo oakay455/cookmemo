@@ -33,13 +33,15 @@
 ## 機能一覧
 **ユーザー側**<br>
 - 会員機能（新規登録・ログイン）
-- 料理投稿・編集・削除
-- 投稿の詳細画面
-- 投稿一覧画面
 - 会員マイページ
+- レシピ(料理メモ)投稿・編集・削除
+- 投稿の詳細閲覧
+- 投稿一覧画面閲覧
+- ユーザー検索
 - レシピ検索機能（キーワード、カテゴリー）
 - いいね機能（非同期）
 - コメント機能(非同期)
+- フォローフォロワー機能
 - ブックマーク機能
 - レスポンシブ対応
 - ゲストログイン機能
@@ -56,23 +58,9 @@
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
-
-##フロントエンド
-- Bootstrap 5.0.2
+- レイアウト:Bootstrap 5.0.2
 - Fontawesome 6.1.1
-- jQuery、Ajax
 
-##バックエンド
-Ruby 
-Ruby on Rails 
-
-##インフラ
- - AWS
- - Cloud9
- - EC2
- - RDS
- - Route53
- 
 ##画像使用サイト
 - Unsplash. https://unsplash.com/
 - Foodiesfeed  https://www.foodiesfeed.com/
