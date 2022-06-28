@@ -1,7 +1,7 @@
 <% recipes.each do |recipe| %>
   <div class="card mb-3 mx-auto" style="max-width: 840px;">
     <div class="row g-0">
-      <div class="col-md-4 pt-1">
+      <div class="col-12 col-md-4 pt-1">
         <img class="recipe-image"><%= link_to recipe_path(recipe) do %>
           <% if recipe.recipe_image.attached? %>
             <%= image_tag recipe.recipe_image, size: "170x170", class: "rounded" %>
@@ -11,7 +11,7 @@
           <% end %>
         </img>
         </div>
-        <div class="col-md-8">
+        <div class="col-12 col-md-8">
           <div class="card-body pt-4">
             <h5 class="card-title"><strong>
               <%= link_to recipe_path(recipe) do %>

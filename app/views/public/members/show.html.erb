@@ -1,64 +1,59 @@
-<div class="container">
-  <div class="row pt-5">
-    <div class="col-12 col-md-2 offset-md-2">
-      <div class="link">
-        <div><%= link_to new_recipe_path do %>
-          <p><i class="fa-solid fa-pen-to-square fa-lg"></i><strong>レシピを投稿する</strong></p>
-          <% end %>
-        </div>
-        <div>
-          <%= link_to member_myrecipe_path(@recipes) do %>
-            <p><i class="fa-solid fa-utensils fa-lg"></i>マイレシピ一覧</p>
-          <% end %>
-        </div>
-        <div>
-          <%= link_to bookmarks_member_path(@member) do %>
-            <p><i class="fa-solid fa-bookmark fa-lg"></i>ブックマーク済</p>
-          <% end %>
-        </div>
+<div class="row pt-5">
+  <div class="col-12 col-md-2 offset-md-2">
+    <div class="link">
+      <div><%= link_to new_recipe_path do %>
+        <p><i class="fa-solid fa-pen-to-square fa-lg"></i><strong>レシピを投稿する</strong></p>
+        <% end %>
       </div>
+      <div>
+        <%= link_to member_myrecipe_path(@recipes) do %>
+          <p><i class="fa-solid fa-utensils fa-lg"></i>マイレシピ一覧</p>
+        <% end %>
+      </div>
+      <div>
+        <%= link_to bookmarks_member_path(@member) do %>
+          <p><i class="fa-solid fa-bookmark fa-lg"></i>ブックマーク済</p>
+        <% end %>
+      </div>
+    </div>
 
-      <div class="user-info">
-        <%= image_tag @member.get_profile_image(150,150), class: "rounded-circle" %>
-        <h5 class="user-name"><%= @member.name %></h5>
-        <p><%= simple_format(@member.introduction) %></p>
-        <p>
-          <small>フォロー</small><%= link_to @member.followings.count, member_followings_path(@member) %>
-          <small>フォロワー</small><%= link_to @member.followers.count, member_followers_path(@member) %>
-        </p>
-          <div>
-            <% if @member == current_member %>
-              <%= link_to edit_member_path(current_member), class:'btn btn-outline-secondary btn-block' do %>
-                プロフィール編集
+    <div class="user-info">
+      <%= image_tag @member.get_profile_image(150,150), class: "rounded-circle" %>
+      <h5 class="user-name"><%= @member.name %></h5>
+      <p><%= simple_format(@member.introduction) %></p>
+      <p><small>フォロー</small><%= link_to @member.followings.count, member_followings_path(@member) %>
+        <small>フォロワー</small><%= link_to @member.followers.count, member_followers_path(@member) %></p>
+      <div>
+        <% if @member == current_member %>
+          <%= link_to edit_member_path(current_member), class:'btn btn-outline-secondary btn-block' do %>
+            プロフィール編集
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-7 main-post">
+    <h2 class="mypage-title">Recent my recipe</h2>
+      <% if @recipes.exists? %>
+        <div class="post-wrap">
+          <% @recipes.each do |recipe| %>
+          <div class="post-box">
+            <%= link_to recipe_path(recipe) do %>
+              <% if recipe.recipe_image.attached? %>
+                <%= image_tag recipe.recipe_image, size: "170x170", class: "rounded" %>
+              <% else %>
+                <%= image_tag 'no_image.jpg', size: "170x170", class: "rounded" %>
               <% end %>
             <% end %>
+            <div class="post-content">
+              <span><%= recipe.created_at.strftime('%Y/%m/%d') %></span>
+            </div>
           </div>
+            <% end %>
         </div>
-      </div>
-
-    <div class="col-12 col-md-7 main-post">
-      <h2 class="mypage-title">Recent my recipe</h2>
-        <% if @recipes.exists? %>
-          <div class="post-wrap">
-            <% @recipes.each do |recipe| %>
-              <div class="post-box">
-                <%= link_to recipe_path(recipe) do %>
-                  <% if recipe.recipe_image.attached? %>
-                    <%= image_tag recipe.recipe_image, size: "170x170", class: "rounded" %>
-                    <% else %>
-                    <%= image_tag 'no_image.jpg', size: "170x170", class: "rounded" %>
-                    <% end %>
-                  <% end %>
-                <div class="post-content">
-                  <span><%= recipe.created_at.strftime('%Y/%m/%d') %></span>
-                </div>
-              </div>
-          <% end %>
-          </div>
-          <% else %>
-            <p>まだ投稿がありません</p>
-          </div>
-          <% end %>
-    </div>
+      <% else %>
+        <p>まだ投稿がありません</p>
+      <% end %>
   </div>
 </div>

@@ -18,15 +18,15 @@
     <header>
       <%= render "layouts/header" %>
     </header>
-    <main>
-       <% if member_signed_in? || admin_signed_in? %>
-      <div class="d-flex justify-content-center mb-2">
-      <%= render 'public/searches/form' %>
+    <main class="container">
+      <% if member_signed_in? || admin_signed_in? %>
+        <div class="d-flex justify-content-center mb-2">
+          <%= render 'public/searches/form' %>
+        </div>
       <% end %>
-    </div>
-    <div id="flash-message">
-      <%= render "layouts/notice" %>
-    </div>
+      <div id="flash-message">
+        <%= render "layouts/notice" %>
+      </div>
       <%= yield %>
     </main>
     <footer>

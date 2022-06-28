@@ -1,22 +1,24 @@
-<% if recipes.exists? %>
-  <div class="post-wrap">
-    <% recipes.each do |recipe| %>
-      <div class="post-box">
-        <%= link_to recipe_path(recipe) do %>
-          <% if recipe.recipe_image.attached? %>
-            <%= image_tag recipe.recipe_image, size: "170x170", class: "rounded" %>
-          <% else %>
-            <%= image_tag 'no_image.jpg', size: "170x170", class: "rounded" %>
+<div class="row">
+  <% if recipes.exists? %>
+    <div class="col-12 col-sm-7 post-wrap">
+      <% recipes.each do |recipe| %>
+        <div class="post-box">
+          <%= link_to recipe_path(recipe) do %>
+            <% if recipe.recipe_image.attached? %>
+              <%= image_tag recipe.recipe_image, size: "150x150", class: "rounded" %>
+            <% else %>
+              <%= image_tag 'no_image.jpg', size: "150x150", class: "rounded" %>
+              <% end %>
             <% end %>
-          <% end %>
 
-          <div class="post-content">
-            <span><%= recipe.created_at.strftime('%Y/%m/%d') %></span>
+            <div class="post-content">
+              <span><%= recipe.created_at.strftime('%Y/%m/%d') %></span>
+              </div>
             </div>
-          </div>
-        <% end %>
-      </div>
-    <% else %>
-  </div>
-    <p class="text-center">まだ投稿がありません</p>
-<% end %>
+          <% end %>
+        </div>
+      <% else %>
+    </div>
+      <p class="text-center">まだ投稿がありません</p>
+  <% end %>
+</div>

@@ -1,21 +1,23 @@
-<table class="user-table">
-  <thead>
-    <tr>
-      <th colspan="md-3"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% members.each do |member| %>
-    <tr>
-      <td><%= link_to member, class: member_path(member) do %>
-        <%= image_tag member.get_profile_image(100,100), class: "rounded-circle" %>
-        <% end %>
-      </td>
-      <td><%= link_to member, class: member_path(member) do %>
-          <%= member.name %>
-          <% end %></td>
-      <td><%= render "public/relationships/btn", member: member %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row">
+  <table class="col-11 col-sm-6 user-table">
+    <thead>
+      <tr>
+        <th colspan="md-3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% members.each do |member| %>
+      <tr>
+        <td><%= link_to member, class: member_path(member) do %>
+          <%= image_tag member.get_profile_image(100,100), class: "rounded-circle" %>
+          <% end %>
+        </td>
+        <td><%= link_to member, class: member_path(member) do %>
+            <%= member.name %>
+            <% end %></td>
+        <td><%= render "public/relationships/btn", member: member %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
