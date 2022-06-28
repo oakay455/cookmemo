@@ -5,7 +5,7 @@ class Public::MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
-    @recipes = @member.recipes.order(created_at: :desc).page(params[:page]).per(8)
+    @recipes = @member.recipes.order(created_at: :desc).page(params[:page]).per(9)
     @categories = Category.all
   end
 
@@ -44,7 +44,7 @@ class Public::MembersController < ApplicationController
     bookmarks = Bookmark.where(member_id: @member.id).pluck(:recipe_id)
     @bookmark_recipes = Recipe.find(bookmarks)
   end
-  
+
   def member_search
     @members = Member.member_search(params[:keyword])
   end
