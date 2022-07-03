@@ -11,6 +11,11 @@
           <% end %><br>
             <%= link_to @recipe.member.name, member_path(@member) %>
         </div>
+        <div class="tag-box">
+          <% @recipe.tags.each do |tag| %>
+            <span class="label"><%= tag.name %></span>
+          <% end %>
+        </div>
         <div class="fav-bookmark">
           <div class="recipe-category">
             <%= @recipe.category.name %>

@@ -26,6 +26,9 @@
               <%= link_to "コメント数: #{recipe.comments.count}", recipe_path(recipe.id) %>
             </small></p>
             <div class="recipe-category"><%= recipe.category.name %></div>
+            <% recipe.tags.each do |tag| %>
+              <span class="label"><%= tag.name %></span>
+            <% end %>
           </div>
         </div>
     </div>
