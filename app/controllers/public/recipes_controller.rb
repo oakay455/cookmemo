@@ -10,6 +10,11 @@ class Public::RecipesController < ApplicationController
    @recipe = Recipe.new(recipe_params)
    @recipe.member_id = current_member.id
   if @recipe.save
+     tags = Vision.get_image_data(@recipe.recipe_image)
+     tags.each do |tag|
+      @recipe.tags.create(name: tag)
+     end
+
    flash[:notice] = 'You have created recipe successfully.'
    redirect_to recipe_path(@recipe.id)
   else

@@ -63,3 +63,4 @@ end
 
 gem 'devise'
 gem 'kaminari','~> 1.2.1'
+gem 'dotenv-rails'

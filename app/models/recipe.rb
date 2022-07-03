@@ -8,8 +8,8 @@ class Recipe < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :recipe_favorites, dependent: :destroy
   belongs_to :category
-
   has_many :bookmarks, dependent: :destroy
+  has_many :tags, dependent: :destroy
 
   has_one_attached :recipe_image
 
